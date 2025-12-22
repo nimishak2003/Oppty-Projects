@@ -1,0 +1,81 @@
+
+        body {
+            margin: 0;
+            padding: 0;
+            background:linear-gradient(to bottom,blueviolet, rgb(161, 36, 57),orange,green,pink);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card-wrapper {
+            background:linear-gradient(to right, #2563eb, blueviolet, aqua);
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .profile-card {
+            background-color: #ffffff;
+            width: 320px;
+            padding: 25px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-icon {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #2563eb;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-icon img {
+            width:100px; 
+            height:80px;
+            border-radius:70%;
+            object-fit:cover;
+        }
+
+        h2 {
+            margin: 8px 0;
+            color: #222;
+        }
+
+        h4 {
+            margin: 5px 0 15px;
+            color: #2563eb;
+            font-weight: normal;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icons img {
+            width: 24px;
+            margin: 0 6px;
+            cursor: pointer;
+        }

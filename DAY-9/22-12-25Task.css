@@ -1,0 +1,57 @@
+body{
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background: #bdbdbd;
+}
+
+.page{
+    width: 780px;
+    margin: 40px;
+    border: 1px solid #333;
+    background: #fff;
+}
+
+.banner{
+    background:#9b4b2f ;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.banner h1{
+    margin: 0;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #111;
+}
+
+.content{
+    background: #e5c37b;
+    padding: 18px 20px 28px;
+}
+
+.menu{
+    margin: 18px;
+}
+.menu li{
+    margin:4px;
+}
+
+.menu a {
+  color: #2b57c7;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.content h2 {
+  margin: 10px 0 10px;
+  font-size: 34px;
+  font-weight: 800;
+  color: #111;
+}
+
+
+.content p {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #111;

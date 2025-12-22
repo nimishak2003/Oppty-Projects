@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic JS Example</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            background: linear-gradient(to bottom right, #ffffff, #f3f4f6);
+            padding: 30px 40px;
+            border-radius: 15px;
+            width: 320px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .info {
+            font-size: 16px;
+            color: #555;
+            margin: 8px 0;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>User Details</h2>
+    <div id="output"></div>
+</div>
+
+<script>
+    // Declaring variables
+    var name = "Nimisha";
+    var age = 21;
+    var gender = "Female";
+    var mobileNumber = "9502361284";
+    var Gmail = "nimishakadirappagari03@gmail.com";
+    var LinkedIn ="http://linkedin.com/in/kadirappagari-nimisha-163b48258 ";
+    var GitHub ="https://github.com/topics/login?o=asc&s=stars";
+
+    // Displaying values inside container
+    document.getElementById("output").innerHTML =
+        "<div class='info'><span class='label'>Name:</span> " + name + "</div>" +
+        "<div class='info'><span class='label'>Age:</span> " + age + "</div>" +
+        "<div class='info'><span class='label'>Gender:</span> " + gender + "</div>" +
+        "<div class='info'><span class='label'>Mobile:</span> " + mobileNumber + "</div>"+
+        "<div class='info'><span class='label'>Gmail:</span> " + Gmail + "</div>" +
+        "<div class='info'><span class='label'>LinkedIn:</span> " + LinkedIn + "</div>" +
+        "<div class='info'><span class='label'>GitHub:</span> " + GitHub + "</div>" ;
+
+</script>
+
+</body>
+</html>
