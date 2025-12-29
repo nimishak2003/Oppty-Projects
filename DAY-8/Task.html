@@ -1,74 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Basic JS Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
 
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            padding: 0;
+            background: #f2f6fb;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to right, #667eea, #764ba2);
-            font-family: Arial, sans-serif;
+            height: 100vh;
         }
 
-        .card {
-            background: linear-gradient(to bottom right, #ffffff, #f3f4f6);
-            padding: 30px 40px;
-            border-radius: 15px;
-            width: 320px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        .card-container {
+            background: #aac1e8;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .profile-card {
+            background: #ffffff;
+            width: 300px;
+            padding: 25px;
+            border-radius: 18px;
             text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        .card h2 {
-            margin-bottom: 20px;
-            color: #333;
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
         }
 
-        .info {
-            font-size: 16px;
-            color: #555;
-            margin: 8px 0;
+        .icon-circle img {
+                width: 35px;
         }
 
-        .label {
-            font-weight: bold;
+        h2 {
+            margin: 5px 0;
             color: #222;
+        }
+
+        h4 {
+            margin: 5px ;
+            color: #3b82f6;
+            font-weight: normal;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: #3b82f6;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icons img {
+            width: 24px;
+            cursor: pointer;
         }
     </style>
 </head>
-
 <body>
 
-<div class="card">
-    <h2>User Details</h2>
-    <div id="output"></div>
-</div>
+    <div class="card-container">
+        <div class="profile-card">
 
-<script>
-    // Declaring variables
-    var name = "Nimisha";
-    var age = 21;
-    var gender = "Female";
-    var mobileNumber = "9502361284";
-    var Gmail = "nimishakadirappagari03@gmail.com";
-    var LinkedIn ="http://linkedin.com/in/kadirappagari-nimisha-163b48258 ";
-    var GitHub ="https://github.com/topics/login?o=asc&s=stars";
+            <div class="icon-circle">
+                <img src="https://png.pngtree.com/png-vector/20231224/ourmid/pngtree-flat-blue-crown-icon-on-a-white-background-with-png-image_11221083.png" alt="User Icon">
+            </div>
 
-    // Displaying values inside container
-    document.getElementById("output").innerHTML =
-        "<div class='info'><span class='label'>Name:</span> " + name + "</div>" +
-        "<div class='info'><span class='label'>Age:</span> " + age + "</div>" +
-        "<div class='info'><span class='label'>Gender:</span> " + gender + "</div>" +
-        "<div class='info'><span class='label'>Mobile:</span> " + mobileNumber + "</div>"+
-        "<div class='info'><span class='label'>Gmail:</span> " + Gmail + "</div>" +
-        "<div class='info'><span class='label'>LinkedIn:</span> " + LinkedIn + "</div>" +
-        "<div class='info'><span class='label'>GitHub:</span> " + GitHub + "</div>" ;
+            <h2>Nimisha</h2>
+            <h4>Senior UI/UX Designer</h4>
 
-</script>
+            <p>
+                Focused on creating clean, accessible, and high-conversion user interfaces.
+            </p>
+
+            <button class="btn">View Portfolio</button>
+
+            <div class="social-icons">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                    alt="LinkedIn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                    alt="LinkedIn">
+            </div>
+
+        </div>
+    </div>
 
 </body>
 </html>
