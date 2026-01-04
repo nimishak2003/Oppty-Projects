@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My HTML Portfolio</title>
+  <link rel="stylesheet" href="02-01-26Task.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- Header -->
+    <header class="site-header">
+      <h1>My HTML Portfolio</h1>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#demo">Demo</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <hr />
+    </header>
+
+    <!-- About -->
+    <section id="home" class="section">
+      <h2>About HTML</h2>
+      <hr />
+      <p>
+        HTML stands for HyperText Markup Language. It is the standard language used to create web pages.
+      </p>
+    </section>
+
+    <!-- Key Features + Image -->
+    <section id="features" class="section">
+      <h2>Key Features of HTML</h2>
+      <hr />
+
+      <div class="two-col">
+        <div>
+          <ul class="bullet-list">
+            <li>Easy to learn</li>
+            <li>Semantic structure</li>
+            <li>Multimedia support</li>
+            <li>Forms and tables</li>
+          </ul>
+        </div>
+
+        <figure class="media-box">
+          <!-- Replace image path with your image -->
+          <img src="laptop.jpg" alt="Laptop and coffee"/>
+          <figcaption>Laptop and coffee</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Topics + Table -->
+    <section class="section">
+      <h2>HTML Topics Covered</h2>
+      <hr />
+
+      <div class="two-col">
+        <div>
+          <ol class="number-list">
+            <li>Headings &amp; Sections</li>
+            <li>Lists and Tables</li>
+            <li>Forms and Inputs</li>
+            <li>Media Embeds</li>
+          </ol>
+        </div>
+
+        <div class="table-card">
+          <div class="table-title">Project Timeline</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Phase</th>
+                <th>Tasks</th>
+                <th>Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Planning</td>
+                <td>Research &amp; Outline</td>
+                <td>1 Week</td>
+              </tr>
+              <tr>
+                <td>Development</td>
+                <td>Coding Content</td>
+                <td>2 Weeks</td>
+              </tr>
+              <tr>
+                <td>Review</td>
+                <td>Testing &amp; Fixes</td>
+                <td>3 Days</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="section">
+      <h2>Resources</h2>
+      <hr />
+
+      <ul class="resources">
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN Web Docs</a>
+          <span>- HTML Guide</span>
+          <div class="subtext">Comprehensive HTML reference</div>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/html/" target="_blank">W3Schools</a>
+          <span>- HTML Tutorial</span>
+          <div class="subtext">Learn HTML basics</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Demo Video -->
+    <section id="demo" class="section">
+      <h2>Demo Video</h2>
+      <hr />
+
+      <div class="video-box">
+        <!-- Replace the src with your YouTube embed link -->
+        <iframe
+          src="https://www.youtube.com/embed/qz0aGYrrlhU"
+          title="HTML Demo Video"
+          allowfullscreen>
+        </iframe>
+        <p class="video-caption">Lazy-loaded demo via iframe</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h2>Contact Me</h2>
+      <hr />
+
+      <form class="contact-form" action="#" method="post">
+        <div class="form-row">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" />
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" />
+        </div>
+
+        <div class="form-row">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5"></textarea>
+        </div>
+
+        <div class="form-row inline">
+          <label>Subscribe to newsletter?</label>
+          <label class="choice"><input type="radio" name="subscribe" /> Yes</label>
+          <label class="choice"><input type="radio" name="subscribe" /> No</label>
+        </div>
+
+        <div class="form-row inline">
+          <label>Preferred Contact:</label>
+          <label class="choice"><input type="checkbox" /> Email</label>
+          <label class="choice"><input type="checkbox" /> Phone</label>
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <hr />
+      <p>
+        © 2024 My HTML Portfolio |
+        <a href="mailto:contact@example.com">contact@example.com</a> |
+        Location: Anytown, USA
+      </p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
