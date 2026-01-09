@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #2f2f2f;
+  color: #ffffff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #ffffff;
+  margin-left: 25px;
+  font-size: 14px;
+}
+
+.nav a:hover {
+  color: #f5b400;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px;
+  min-height: 85vh;
+}
+
+.hero-text {
+  max-width: 550px;
+}
+
+.hello {
+  color: #f5b400;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.hero-text h1 {
+  font-size: 38px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.hero-text h1 span {
+  color: #f5b400;
+}
+
+.hero-text p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #dddddd;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 25px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.btn:hover{
+    transform: translateX(+3px);
+    filter: brightness(1.05);
+}
+
+.hire {
+  background-color: #7b5cff;
+}
+
+.cv {
+  background-color: #f5b400;
+  color: #000; 
+}
+
+.hero-img img {
+  max-width: 520px;
+  transform: translateX(+5px);
+}
