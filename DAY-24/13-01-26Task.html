@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Form Layout</title>
+  <link rel="stylesheet" href="13-01-26Task.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+  <section class="contact-wrap">
+    <div class="contact-container">
+      <div class="left">
+        <div class="cookie-box">
+          <p>To see the interactive content, you need to accept optional cookies.</p>
+        </div>
+
+        <div class="intro">
+          <p class="intro-title">
+            Contact us about anything related to our company or services.
+          </p>
+          <p class="intro-sub">
+            We'll do our best to get back to you as soon as possible.
+          </p>
+        </div>
+
+        <form class="contact-form">
+          <div class="grid">
+            <div class="field">
+              <label for="name">Name <span>*</span></label>
+              <input id="name" type="text"/>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone Number</label>
+              <input id="phone" type="text" value="+91" />
+            </div>
+
+            <div class="field">
+              <label for="email">Email <span>*</span></label>
+              <input id="email" type="email" />
+            </div>
+
+            <div class="field">
+              <label for="company">Company<span>*</span></label>
+              <input id="company" type="text" />
+            </div>
+          </div>
+
+          <div class="field full">
+            <label for="subject">Subject <span>*</span></label>
+            <input id="subject" type="text" />
+          </div>
+
+          <div class="field full">
+            <label for="question">Question <span>*</span></label>
+            <textarea id="question" name="question" rows="5"></textarea>
+          </div>
+
+          <div class="btn-row">
+            <button type="submit" class="submit-btn">Submit</button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="right">
+        <h3 class="brand-title">ProCareer by Prince Kumar</h3>
+
+        <div class="info">
+          <p><i class="fa-solid fa-location-dot"></i> Hitech city, Madhapur, Hyderabad, Telangana.</p>
+          <p><i class="fa-solid fa-phone"></i> +91-9491209900</p>
+          <p><i class="fa-solid fa-envelope"></i> info@procareer.tech</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</body>
+</html>
