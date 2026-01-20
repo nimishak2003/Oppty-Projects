@@ -1,0 +1,171 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background: #ffffff;
+  color: #222;
+}
+
+.services{
+  width: 100%;
+  padding: 50px 70px 60px;
+}
+
+.section-top{
+  margin-bottom: 35px;
+}
+
+.mini-title{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 14px;
+  color: #1b1b1b;
+}
+
+.mini-line{
+  width: 100px;
+  height: 2px;
+  background: #d78a1a;
+  display: inline-block;
+}
+
+.mini-desc{
+  margin-top: 8px;
+  font-size: 13px;
+  color: #777;
+}
+
+.hero-row{
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 45px;
+}
+
+.hero-left .pill{
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 5px;
+  background: #f4e7d0;
+  color: #b86b00;
+  margin-bottom: 18px;
+}
+
+.hero-left h2{
+  font-size: 44px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.hero-para{
+  font-size: 14px;
+  color: #666;
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: #d88919;
+  color: #fff;
+  padding: 13px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.25s;
+}
+
+.btn:hover{
+  background: #b97211;
+}
+.hero-right img{
+  width: 100%;
+  max-width: 520px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 70px;
+}
+
+.card{
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px 26px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+  position: relative;
+  min-height: 300px;
+}
+
+.icon-circle{
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #d88919;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.icon-circle i{
+  color: #fff;
+  font-size: 20px;
+}
+
+.card h3{
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: 800px;
+}
+
+.card p{
+  font-size: 13px;
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.card-bottom{
+  position: absolute;
+  left: 26px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-bottom .line{
+  width: 55px;
+  height: 2px;
+  background: #d88919;
+  display: inline-block;
+}
+
+.card-bottom .num{
+  font-weight: 800;
+  color: #d88919;
+  font-size: 14px;
+}
+
+
