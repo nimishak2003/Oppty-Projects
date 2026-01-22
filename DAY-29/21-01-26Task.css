@@ -49,7 +49,7 @@ body{
 }
 
 .left{
-  background: #f0eded;
+  background:rgb(241, 239, 239);
   padding:20px;
   border-radius: 10px;
 }
@@ -166,7 +166,6 @@ body{
 .field textarea{
   width: 100%;
   min-height: 120px;
-  resize: none;
   border: none;
   outline: none;
   padding: 14px 14px 14px 42px;

@@ -1,0 +1,85 @@
+body {
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #333333;
+  width: 100%;
+
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 400px;
+}
+
+.project-box {
+  border: 2px dashed #2e7d32; 
+  padding: 18px;
+  margin: 18px auto;
+  max-width: 980px;
+  background: #fff;
+}
+
+.project-title {
+  text-align: center;
+  color: #2e7d32;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.project-table {
+  border-collapse: collapse;
+}
+
+.project-table th,
+.project-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.project-table thead th {
+  background: #f58220; 
+  color: #fff;
+  font-weight: 700;
+}
+
+.center {
+  text-align: center;
+  width: 80px;
+}
+
+.amount {
+  color: #2e7d32;
+  font-weight: 700;
+  text-align: center;
+}
+
+.desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  padding: 25px;
+}
+
+.img-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 12px;
+  width: 95%;
+  margin-left: 20px;
+}
+
+.img-row img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+
