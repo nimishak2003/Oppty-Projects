@@ -38,10 +38,6 @@
     cursor: pointer;
 }
 
-.img-hover:hover {
-    transform: scale(1.1);
-}
-
 .team-card h3 {
     font-size: 27px;
     margin-bottom: 10px;
