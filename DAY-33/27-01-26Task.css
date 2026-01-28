@@ -19,7 +19,7 @@ body{
     margin-bottom:15px;
 }
 
-.subtitle{
+#subtitle{
     color: #666;
     margin-bottom: 40px;
 }
@@ -93,3 +93,22 @@ body{
     }
 }
 
+@media (max-width:600px) {
+    .cards{
+        grid-template-columns: 1fr;
+    }
+
+    .tabs button{
+        display: block;
+        margin: 10px auto;
+    }
+
+    .card img{
+        height: 180px;
+    }
+
+    .resources{
+        padding: 40px 15px;
+    }
+
+}
