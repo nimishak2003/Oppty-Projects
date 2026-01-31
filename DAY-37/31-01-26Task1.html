@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Concepts</title>
+  </head>
+  <body>
+    <script>
+      //Array Length
+      //Example-1
+      console.log("Array Length:");
+      let names = ["sujana", "nimisha", "akhila"];
+      console.log(names.length);
+
+      //Example-2
+      names[3] = "bhargav";
+      console.log(names.length);
+      console.log(names);
+
+      //Array to string()
+      //Example-1
+      let fruits = ["Apple", "Banana", "Mango"];
+      console.log(fruits.toString());
+
+      //Example-2
+      let nums = [10, 20, 30];
+      console.log(nums.toString());
+
+      //Array join()
+      //Example-1
+      let cities = ["Hyderabad", "Bangalore", "Chennai"];
+      console.log(cities.join(" | "));
+      console.log(cities.join(" "));
+
+      //Example-2
+      let num = ["1", "2", "3", "4", "5"];
+      console.log(num.join(" - "));
+
+      //Delete Operator
+      //Example-1
+      let employee = {
+        name: "Nimisha",
+        role: "Web Developer",
+        salary: 35000,
+      };
+
+      delete employee.salary;
+      console.log(employee);
+
+      //Array concat()
+      //Example-1
+      let a1 = ["a", "b"];
+      let a2 = ["c", "d"];
+
+      let result = a1.concat(a2);
+      console.log(result);
+
+      //Example-2
+      let result2 = a1.concat("e", "f");
+      console.log(result2);
+
+    </script>
+  </body>
+</html>
