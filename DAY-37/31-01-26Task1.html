@@ -7,19 +7,20 @@
   </head>
   <body>
     <script>
-      //Array Length
+      //1.Array Length
       //Example-1
       console.log("Array Length:");
       let names = ["sujana", "nimisha", "akhila"];
       console.log(names.length);
 
       //Example-2
-      names[3] = "bhargav";
+      names[3] = "vishnu";
       console.log(names.length);
       console.log(names);
 
-      //Array to string()
+      //2.Array to String()
       //Example-1
+      console.log("Array to String:");
       let fruits = ["Apple", "Banana", "Mango"];
       console.log(fruits.toString());
 
@@ -27,8 +28,9 @@
       let nums = [10, 20, 30];
       console.log(nums.toString());
 
-      //Array join()
+      //3.Array join()
       //Example-1
+      console.log("Array join:");
       let cities = ["Hyderabad", "Bangalore", "Chennai"];
       console.log(cities.join(" | "));
       console.log(cities.join(" "));
@@ -37,8 +39,9 @@
       let num = ["1", "2", "3", "4", "5"];
       console.log(num.join(" - "));
 
-      //Delete Operator
+      //4.Delete Operator
       //Example-1
+      console.log("Delete Operator:");
       let employee = {
         name: "Nimisha",
         role: "Web Developer",
@@ -48,11 +51,16 @@
       delete employee.salary;
       console.log(employee);
 
-      //Array concat()
+      //Example-2
+      let m = [10, 20, 30];
+      delete m[1];
+      console.log(m);
+
+      //5.Array concat()
       //Example-1
+      console.log("Array concat:");
       let a1 = ["a", "b"];
       let a2 = ["c", "d"];
-
       let result = a1.concat(a2);
       console.log(result);
 
@@ -60,6 +68,153 @@
       let result2 = a1.concat("e", "f");
       console.log(result2);
 
+      //6.Array flat()
+      //Example-1
+      console.log("Array flat:");
+      let arr = [1, [2, 3], [4, [5, 6]]];
+      console.log(arr.flat(Infinity));
+      
+      // Example-2
+      let levels = [1, [2, [3, [4]]]];
+      console.log(levels.flat(Infinity));
+
+      //7.Array push()
+      console.log("Array push:");
+      let students = ["sujana", "nimisha"];
+      students.push("akhila");
+      console.log(students);
+
+      let count = students.push("bhargav", "ravi");
+      console.log(count);
+
+      //8.Array unshift()
+      console.log("Array unshift():");
+      let colors = ["green", "blue"];
+      colors.unshift("red");
+      console.log(colors);
+
+      colors.unshift("yellow", "pink");
+      console.log(colors);
+
+      //9.Array pop
+      console.log("Array pop:");
+      let numbers = [1, 2, 3, 4];
+      let removed = numbers.pop();
+      console.log(removed);
+      console.log(numbers);
+
+      //10.Array Shift
+      // Example-1
+      console.log("Array Shift:");
+      let queue = ["A", "B", "C"];
+      let first = queue.shift();
+      console.log(first);
+      console.log(queue);
+
+      // Example-2
+      let tasks = ["Task1", "Task2", "Task3"];
+      tasks.shift();
+      console.log(tasks);
+
+      //11.Array Splice
+      // Example-1
+      console.log("Array Splice:");
+      let a = [10, 20, 30, 40, 50];
+      a.splice(2, 2);
+      console.log(a);
+
+      // Example-2
+      let b = [10, 20, 50];
+      b.splice(2, 0, 30, 40);
+      console.log(b);
+
+      // Example-3
+      let c = [10, 20, 30];
+      c.splice(1, 1, 25);
+      console.log(c);
+
+      //Array Slice
+      // Example-1
+      console.log("Array Slice:");
+      let s = [10, 20, 30, 40, 50];
+      let part = s.slice(1, 4);
+      console.log(part);
+
+      //Array Some
+      // Example-1
+      console.log("Array Some:");
+      let number = [3, 7, 2];
+      console.log(number.some((num) => num > 5));
+
+      // Example-2
+      let n = [10, 20, 30, 40];
+      let res = n.some((num) => num > 25);
+      console.log(res);
+
+      //Array Map
+      // Example-1
+      console.log("Array Map:");
+      let r = [1, 2, 3];
+      let squares = r.map((r) => r * r);
+      console.log(squares);
+
+      // Example-2
+      let prices = [100, 200, 300];
+      let discountedPrices = prices.map((price) => price - 20);
+      console.log(discountedPrices);
+
+      //Array Filter
+      // Example-1
+      console.log("Array Filter:");
+      let u = [10, 15, 20, 25, 30];
+      let evenNums = nums.filter((num) => num % 2 === 0);
+      console.log(evenNums);
+
+      // Example-2
+      let salaries = [15000, 25000, 35000, 45000];
+      let highSalary = salaries.filter((sal) => sal > 30000);
+      console.log(highSalary);
+
+      //Array Reduce
+      // Example-1
+      console.log("Array Reduce:");
+      let e = [10, 20, 30];
+      let total = e.reduce((sum, num) => sum + num);
+      console.log(total);
+
+      // Example-2
+      let b1 = [1, 2, 3, 4];
+      let tot = b1.reduce((mul, num) => mul * num);
+      console.log(tot);
+
+      //Array Reverse
+      // Example-1
+      console.log("Array Reverse:");
+      let name = ["sujana", "nimisha", "akhila"];
+      name.reverse();
+      console.log(name);
+
+      // Example-2
+      let letters = ["A", "B", "C", "D"];
+      letters.reverse();
+      console.log(letters);
+
+      //Array Values
+      // Example-1
+      console.log("Array Values:");
+      let fruit = ["Apple", "Banana", "Mango"];
+      let iterator = fruit.values();
+      for (let value of iterator) {
+        console.log(value);
+      }
+
+      // Example-2
+      let languages = ["Java", "Python", "JavaScript"];
+      let iterators = languages.values();
+
+      for (let lang of iterators) {
+        console.log(lang);
+      }
     </script>
   </body>
 </html>

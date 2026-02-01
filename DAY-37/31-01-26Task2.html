@@ -1,14 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>String Concepts</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        
+      let course = "JavaScript";
+      let duration = 3;
+
+      console.log(`Course: ${course}, Duration: ${duration} months`);
+
+      //2.String Concatenation: + oprator
+      let first = "Nimisha";
+      let last = "Training";
+
+      console.log(first + " " + last);
+
+      // 3. Escape Characters
+      console.log("I\'m learning JavaScript");
+      console.log('She said "Hello"');
+      console.log("Path: C:\\Users\\Admin");
+
+      // 4. Breaking Long Strings
+      let text = `
+JavaScript is easy.
+      JavaScript is powerful.
+      JavaScript is fun.`;
+
+      console.log(text);
+
+      //Substring of a String:
+      let str = "JavaScript";
+
+      console.log(str.substring(0, 4)); // Java
+      console.log(str.substring(4)); // Script
+
+      //Convert String to Uppercase and Lowercase
+      let email = "Nimisha@Mail.Com";
+      console.log(email.toLowerCase());
+
     </script>
-    
-</body>
+  </body>
 </html>
