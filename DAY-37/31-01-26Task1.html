@@ -39,15 +39,14 @@
       let num = ["1", "2", "3", "4", "5"];
       console.log(num.join(" - "));
 
-      //4.Delete Operator
+      //4.Array delete operator
       //Example-1
-      console.log("Delete Operator:");
+      console.log("Array Delete Operator:");
       let employee = {
         name: "Nimisha",
         role: "Web Developer",
         salary: 35000,
       };
-
       delete employee.salary;
       console.log(employee);
 
@@ -79,24 +78,29 @@
       console.log(levels.flat(Infinity));
 
       //7.Array push()
+      //Example-1
       console.log("Array push:");
       let students = ["sujana", "nimisha"];
       students.push("akhila");
       console.log(students);
 
-      let count = students.push("bhargav", "ravi");
+      //Example-2
+      let count = students.push("bhargav", "ravi","sham");
       console.log(count);
 
       //8.Array unshift()
+      //Example-1
       console.log("Array unshift():");
       let colors = ["green", "blue"];
       colors.unshift("red");
       console.log(colors);
-
+      
+      //Example-2
       colors.unshift("yellow", "pink");
       console.log(colors);
 
       //9.Array pop
+      //Example-1
       console.log("Array pop:");
       let numbers = [1, 2, 3, 4];
       let removed = numbers.pop();
@@ -211,7 +215,6 @@
       // Example-2
       let languages = ["Java", "Python", "JavaScript"];
       let iterators = languages.values();
-
       for (let lang of iterators) {
         console.log(lang);
       }
