@@ -8,72 +8,84 @@
   <body>
     <script>
       //1.Template Literals - String Interpolation
+      console.log("String Interpolation:");
       let course = "JavaScript";
       let duration = 3;
       console.log(`Course: ${course}, Duration: ${duration} months`);
 
       //2.Multiple lines
+      console.log("Multiple lines:");
       let address = `
-      Name: Nimisha
+        Name: Nimisha
             City: Hyderabad
             Course: JavaScript`;
       console.log(address);
 
       //3.String Length
+      console.log("String Length:");
       let word = "Hello World";
       console.log(word.length);
 
       //4.Empty String
-      let empty = "";
+      console.log("Empty String:");
+      let empty = "  ";
       console.log(empty.length);
 
       //5.String Concatenation
+      console.log("String Concatenation:");
       let first = "Nimisha";
       let last = "Associate Software Engineer";
       console.log(first + " " + last);
 
       // 6. Escape Characters
+      console.log("Escape Characters:");
       console.log("I\'m learning JavaScript");
       console.log('She said "Hello"');
       console.log("Path: C:\\Users\\Admin");
 
-      // 4. Breaking Long Strings- clean way
+      // 7. Breaking Long Strings- clean way
+      console.log("Breaking Long Strings:");
       let k = `
           JavaScript is easy.
-                  JavaScript is powerful.
+          JavaScript is powerful.
                   JavaScript is fun.`;
       console.log(k);
 
-      //Substring()
+      //8.Substring()
+      console.log("Substring:");
       let string = "Programming";
       console.log(string.substring(0, 4));
       console.log(string.substring(4));
       console.log(string.substring(3, 7));
       console.log(string.substring(7, 3));
 
-      //SubStr()
+      //9.SubStr()
+      console.log("String SubStr:");
       let lang = "JavaScript";
       console.log(lang.substr(4, 6)); 
       console.log(lang.substr(1, 3)); 
       console.log(lang.substr(-3)); 
 
-      //Slice()
+      //10.Slice()
+      console.log("String Slice:");
       let a = "Frontend";
       console.log(a.slice(0, 5));
       console.log(a.slice(-4));
       console.log(a.slice(-4, -1));
       console.log(a.slice(0, -7));
 
-      //Uppercase
+      //11.Uppercase
+      console.log("String Uppercase:");
       //Example-1
       let city = "hyderabad";
       console.log(city.toUpperCase());
 
-      //Example-2
+      //12.Example-2
       let letter = "I'm nimisha from Tadipatri";
       console.log(letter.toUpperCase());
 
-      //Lowercase()
+      //13.Lowercase()
+      console.log("String Lowercase:");
       //Example-1
       let country = "INDIA";
       console.log(country.toLowerCase());
@@ -82,17 +94,20 @@
       let email = "Nimisha@Mail.Com";
       console.log(email.toLowerCase());
 
-      //index of
+      //14.index of
+      console.log("String Index of:");
       let sentences = "Learn JavaScript and Java";
       console.log(sentences.indexOf("Java"));
-      console.log(sentences.indexOf("pytho"));
+      console.log(sentences.indexOf("python"));
 
-      //includes
+      //15.includes
+      console.log("String Includes:");
       let msg = "Welcome to Oppty";
       console.log(msg.includes("Welcome"));
       console.log(msg.includes("Infosys"));
 
-      //replace
+      //16.replace
+      console.log("String Replace:");
       //Example-1
       let s = "Hello World";
       console.log(s.replace("World", "JavaScript"));
@@ -101,7 +116,8 @@
       let b = "I like apple and apple juice";
       console.log(b.replace("apple", "mango"));
 
-      //replace all
+      //17.replace all
+      console.log("String ReplaceAll:");
       //Example-1
       let text = "HTML is easy. HTML is useful.";
       console.log(text.replaceAll("HTML", "CSS"));
@@ -111,25 +127,30 @@
       console.log(c.replaceAll("cat", "lion"));
       console.log(c.replaceAll("dog", "tiger"));
 
-      //trim, trim start ,trim end
-      let str = "   JavaScript   ";
+      //18.trim, trim start ,trim end
+      console.log("String Trim:");
 
+      let str = "   JavaScript   ";
       console.log(str.trim());
       console.log(str.trimStart());
       console.log(str.trimEnd());
 
-      //pad start,pad en
+      //19.pad start,pad end
+      console.log("String Pad:");
+
       let id = "7";
       console.log(id.padStart(3, "0"));
       console.log(id.padEnd(6, "0"));
 
-      //charAt
+      //20.charAt
+      console.log("String CharAt:");
       let name = "Nimisha";
       console.log(name.charAt(0));
       console.log(name.charAt(3));
       console.log(name.charAt(10));
 
-      //charCodeAt()
+      //21.charCodeAt()
+      console.log("String CharCodeAt:");
       //Example-1
       let l = "A";
       console.log(l.charCodeAt(0)); 
@@ -138,7 +159,8 @@
       let digit = "5";
       console.log(digit.charCodeAt(0)); 
 
-      //split
+      //22.split
+      console.log("String Split:");
       //Example-1 (space)
       let skills = "HTML,CSS,JavaScript";
       console.log(skills.split(","));
@@ -151,12 +173,16 @@
       let w = "Hello";
       console.log(w.split(""));
       
-      //locale compare
+      //23.locale compare
+      console.log("String Locale Compare:");
+
       console.log("apple".localeCompare("banana")); 
       console.log("banana".localeCompare("apple")); 
       console.log("apple".localeCompare("apple")); 
 
-      //string object vs string literal
+      //24.string object vs string literal
+      console.log("String Object vs String Literal:");
+
       let s1 = "hello";
       let s2 = new String("hello");
       console.log(typeof s1);
