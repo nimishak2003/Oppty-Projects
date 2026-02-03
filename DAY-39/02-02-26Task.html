@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Functions</title>
+  </head>
+  <body>
+    <script>
+      // Default Prameters
+      console.log("Default Prameters:");
+
+      function name(name = "to World") {
+        console.log("Welcome, " + name);
+      }
+      name();
+      name("Kadirappa Gari Nimisha");
+
+
+      // Return Statement
+      console.log("Return Statement:");
+
+      function add(a, b, c) {
+        return a + b + c;
+      }
+      let result = add(5, 10, 15);
+      console.log(result);
+
+      // Named Function
+      console.log("Named Function:");
+
+      function devil() {
+        return "I am Nimisha";
+      }
+      console.log(devil());
+
+      // Anonomous Function
+      console.log("Anonomous Function:");
+
+      const evil1 = function () {
+        return "Welcome to Anonomous";
+      };
+      console.log(evil1());
+
+      //Function Expression
+      console.log("Function Expression");
+
+      const sub = function (a, b, c) {
+        return a - b - c;
+      };
+      console.log(sub(20, 10, 5));
+
+      // Arrow Function
+      console.log("Arrow Function");
+
+      const square = (r) => r * r;
+      console.log(square(10));
+
+      // Immediately Invoked Function Expression (IIFE)
+      console.log("Immediately Invoked Function Expression (IIFE):");
+
+      (function () {
+        console.log("immediately  invoked the function");
+      })();
+    </script>
+  </body>
+</html>
