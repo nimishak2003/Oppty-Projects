@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Functions</title>
+  </head>
+  <body>
+    <script>
+      // Return Statement
+      console.log("Return Statement:");
+
+      function add(a, b, c) {
+        return a + b + c;
+      }
+      let result = add(3, 2, 15);
+      console.log(result);
+
+      // 1.Named Function
+      //Example-1
+      console.log("Named Function:");
+
+      function text() {
+        return "I am Nimisha";
+      }
+      console.log(text());
+
+      //Example-2
+      const greet = function (name) {
+        return "Hello" + name + "!";
+      };
+      console.log(greet(" Everyone"));
+
+      //Example-3
+      function add(a, b) {
+        return a + b;
+      }
+      console.log(add(3, 9));
+
+      // 2.Anonomous Function
+      console.log("Anonomous Function:");
+
+      //Example-1
+      const sentence = function () {
+        return "Welcome to JavaScript";
+      };
+      console.log(sentence());
+
+      //Example-2 with parameters
+      let squ = function (n) {
+        return n * n;
+      };
+      console.log(squ(4));
+
+      //3.Function Expression
+      console.log("Function Expression");
+
+      //Example-1
+      let message = function (name) {
+        return "Hii" + name;
+      };
+      console.log(message(" Nimisha"));
+
+      //Example-2
+      const sub = function (a, b, c) {
+        return a - b - c;
+      };
+      console.log(sub(10, 5, 8));
+
+      //4.Arrow Function
+      console.log("Arrow Function");
+
+      //Example-1
+      const square = (r) => r * r;
+      console.log(square(6));
+
+      //Example-2
+      const adding = (a, b) => {
+        return a + b;
+      };
+      console.log(adding(4, 5));
+
+      //Example-3
+      const msg = (name) => "Hi " + name;
+      console.log(msg("OPPTY"));
+
+      //5.Immediately Invoked Function Expression (IIFE)
+      console.log("Immediately Invoked Function Expression (IIFE):");
+
+      //Example-1
+      (function () {
+        console.log("IIFE executed automatically");
+      })();
+
+      //Example-2 with return
+      let res = (function (a, b) {
+        return a + b;
+      })(5, 10);
+
+      console.log(res);
+
+      //6.Callback Function
+      console.log("Callback Function:");
+
+      //Example-1
+      function display(result) {
+        console.log(result);
+      }
+
+      function calculate(a, b, callback) {
+        callback(a + b);
+      }
+
+      calculate(10, 20, display);
+
+      //7.Constructor Function
+      console.log("Constructor Functiion:");
+
+      //Example-1
+      function names(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      let name1 = new names("nimisha", 19);
+      let name2 = new names("shakil", 22);
+      let name3 = new names("nived", 20);
+      name1.age = 22;
+      name2.lang = "English";
+      console.log(name1);
+      console.log(name2);
+      console.log(name3);
+
+      //Example-2
+      function Student(name, marks) {
+        this.name = name;
+        this.marks = marks;
+      }
+
+      const s1 = new Student("Ravi", 85);
+      const s2 = new Student("Sujana", 99);
+      console.log(s1.name + " : " + s1.marks);
+      console.log(s2.name + " : " + s2.marks);
+
+      //8.Generator Function
+      console.log("Generators Function:");
+
+      //Example-1
+      function* myfun() {
+        for (let i = 0; i <= 5; i++) {
+          yield i;
+        }
+      }
+      obj = myfun();
+      console.log(obj.next());
+      console.log(obj.next());
+      console.log(obj.next());
+      console.log(obj.next());
+      console.log(obj.next());
+      console.log(obj.next());
+      console.log(obj.next());
+      console.log(obj.next());
+
+      //Example-2
+      function* numbers() {
+        yield 10;
+        yield 20;
+        yield 30;
+      }
+
+      const gen = numbers();
+      console.log(gen.next().value);
+
+      //9.Async Function
+      console.log("Async Function:");
+
+      //   async function word() {
+      //     return "Async Hello!";
+      //   }
+
+      //   word().then((msg) => console.log(msg));
+
+      //10.Recursive Function
+      console.log("Recursive Function:");
+
+      //Example-1
+      function sum(n) {
+        if (n === 0) return 0;
+        return n + sum(n - 1);
+      }
+
+      console.log(sum(5));
+
+      // Example 2: Countdown
+      function countdown(n) {
+        if (n === 0) return;
+        console.log(n);
+        countdown(n - 1);
+      }
+      countdown(5);
+
+      //11.Higher-Order Function
+      console.log("Higher-Order Function:");
+
+      //Example-1
+      function calculate(a, b, operation) {
+        return operation(a, b);
+      }
+
+      let result1 = calculate(10, 5, function (x, y) {
+        return x - y;
+      });
+
+      console.log(result1);
+
+      //12.Nested Functions
+      console.log("Nested Function:");
+
+      //Example-1
+      function outer() {
+        let msg = "Hello";
+
+        function inner() {
+          return msg + " World";
+        }
+        return inner();
+      }
+
+      console.log(outer());
+
+      //13.Pure Funtions
+      console.log("Pure Function:");
+
+      //Example-1
+      function subtraction(a, b) {
+        return a - b;
+      }
+
+      console.log(subtraction(10, 3));
+
+      //14.Default Parameter Function
+      console.log("Default Parameter Function:");
+
+      function name(name = "to World") {
+        console.log("Welcome, " + name);
+      }
+      name();
+      name("Nimisha");
+
+      //15.Rest Parameter Function
+      console.log("Rest Parameter Function:");
+
+      function maxValue(...nums) {
+        return Math.max(...nums);
+      }
+
+      console.log(maxValue(10, 50, 30));
+    </script>
+  </body>
+</html>

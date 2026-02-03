@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Functions</title>
+  </head>
+  <body>
+    <h1 class="title">JavaScript Functions</h1>
+
+    <p id="function"></p>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        background-color: aliceblue;
+        
+      }
+
+      .title {
+        background: linear-gradient(1deg, #ff7a18, #1e90ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 100px;
+      }
+
+      #function {
+        font-size: 30px;
+        color: rgb(222, 95, 171);
+        background-color: rgb(204, 231, 238);
+        font-weight: 500;
+        padding: 15px;
+        width: 500px;
+        border-radius: 15px;
+        margin-left: 570px;
+        margin-top: 60px;
+      }
+      #function:hover {
+        color: #4da3ff;
+        transform: translateX(4px);
+      }
+    </style>
+
+    <script>
+
+      //1.Named Function
+
+      function name(name = "from Hyderabad") {
+        return "I'm Nimisha, " + name;
+      }
+      name("from Hyderabad");
+
+      document.getElementById("function").innerHTML = name("from Hyderabad");
+
+      //2.Anonymous Function
+
+      let msg = function () {
+        return "Welcome to Oppty";
+      };
+      document.getElementById("function").innerHTML = msg("");
+
+      //3.Function Expression
+
+      let area = function (length, width) {
+        return length * width;
+      };
+      document.getElementById("function").innerHTML = area(5, 4);
+
+      //4.Arrow Function
+
+      let checkAge = (age) => {
+        return age >= 18 ? "Adult" : "Minor";
+      };
+      document.getElementById("function").innerHTML = checkAge(20);
+      document.getElementById("function").innerHTML = checkAge(15);
+
+      // 5.Immediately Invoked Function Expression
+
+      let total = function () {
+        let x = 10;
+        let y = 20;
+        return x + y;
+      };
+      document.getElementById("function").innerHTML = total("return");
+
+      // 6.Callback Function
+
+      let calculate = (a, b, callback) => {
+        return callback(a, b);
+      };
+
+      let sum = (x, y) => x + y;
+
+      document.getElementById("function").innerHTML = calculate(5, 5, sum);
+
+      //7.Constructor Function
+
+      Example-1
+      function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        Person.prototype.getInfo = function () {
+            return "Name: " + this.name + ", Age: " + this.age;
+        };
+
+        const person = new Person("Nimisha", 22);
+        document.getElementById("function").innerHTML = person.getInfo();
+
+      //Example-2
+      function Car(brand, price) {
+        this.brand = brand;
+        this.price = price;
+      }
+
+      Car.prototype.details = function () {
+        return this.brand + " cost - " + this.price;
+      };
+
+      let car1 = new Car("BMW:", 5000000);
+      let car2 = new Car("Audi:", 4500000);
+
+      document.getElementById("function").innerHTML = car1.details();
+      document.getElementById("function").innerHTML = car2.details();
+
+      //8.Async Function
+
+      let showMessage = async () => {
+        return "Async Function Executed";
+      };
+
+      showMessage().then((result) => {
+        document.getElementById("function").innerHTML = result;
+      });
+
+      //9.Generator Function
+
+      function* numbers() {
+        yield 1;
+        yield 2;
+      }
+
+      let gen = numbers();
+      document.getElementById("function").innerHTML = gen.next().value;
+
+      //10.Recursive Function
+
+      let factorial = (n) => {
+        if (n === 1) return 1;
+        return n * factorial(n - 1);
+      };
+
+      document.getElementById("function").innerHTML = factorial(5);
+
+      //11.Higher-Order Functions
+
+      let operate = (a, b, fn) => {
+        return fn(a, b);
+      };
+
+      document.getElementById("function").innerHTML = operate(
+        10,
+        5,
+        (x, y) => x - y,
+      );
+
+      //12.Nested Functions
+
+      let outer = (a) => {
+        let inner = (b) => {
+          return a + b;
+        };
+        return inner(5);
+      };
+
+      document.getElementById("function").innerHTML = outer(10);
+
+      //13.Pure Functions
+
+      let addPure = (a, b) => {
+        return a + b;
+      };
+
+      document.getElementById("function").innerHTML = addPure(8, 2);
+
+      //14.Default Parameter Function
+
+      let welcome = (name = "Guest") => {
+        return "Welcome " + name;
+      };
+
+      document.getElementById("function").innerHTML = welcome();
+
+      //15.Rest Parameter Function
+
+      let sumAll = (...nums) => {
+        return nums.reduce((a, b) => a + b);
+      };
+
+      document.getElementById("function").innerHTML = sumAll(1, 2, 3, 4);
+    </script>
+  </body>
+</html>
