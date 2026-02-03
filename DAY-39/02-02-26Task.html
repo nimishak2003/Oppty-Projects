@@ -7,6 +7,7 @@
   </head>
   <body>
     <script>
+      
       // Default Prameters
       console.log("Default Prameters:");
 
@@ -23,24 +24,25 @@
       function add(a, b, c) {
         return a + b + c;
       }
-      let result = add(5, 10, 15);
+      let result = add(3, 2, 15);
       console.log(result);
 
       // Named Function
       console.log("Named Function:");
 
-      function devil() {
+      function text() {
         return "I am Nimisha";
       }
-      console.log(devil());
+      console.log(text());
+
 
       // Anonomous Function
       console.log("Anonomous Function:");
 
-      const evil1 = function () {
-        return "Welcome to Anonomous";
+      const sentence = function () {
+        return "Hello Anonomous";
       };
-      console.log(evil1());
+      console.log(sentence());
 
       //Function Expression
       console.log("Function Expression");
@@ -48,13 +50,13 @@
       const sub = function (a, b, c) {
         return a - b - c;
       };
-      console.log(sub(20, 10, 5));
+      console.log(sub(10, 5, 8));
 
       // Arrow Function
       console.log("Arrow Function");
 
       const square = (r) => r * r;
-      console.log(square(10));
+      console.log(square(6));
 
       // Immediately Invoked Function Expression (IIFE)
       console.log("Immediately Invoked Function Expression (IIFE):");
