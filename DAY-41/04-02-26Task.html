@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feeling Buttons - DOM</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 60px;
+      transition: background-color 0.4s ease;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 12px 18px;
+      margin: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+    }
+
+    #message {
+      margin-top: 40px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>How are you feeling today?</h2>
+
+  <button id="happyBtn">Happy 😊</button>
+  <button id="sadBtn">Sad 😢</button>
+  <button id="angryBtn">Angry 😡</button>
+  <button id="sleepyBtn">Sleepy 😴</button>
+
+  <div id="message"></div>
+
+  <script>
+    // Selecting elements using DOM
+    const happyBtn = document.getElementById("happyBtn");
+    const sadBtn = document.getElementById("sadBtn");
+    const angryBtn = document.getElementById("angryBtn");
+    const sleepyBtn = document.getElementById("sleepyBtn");
+    const message = document.getElementById("message");
+
+    // Happy Button
+    happyBtn.addEventListener("click", function () {
+      document.body.style.backgroundColor = "yellow";
+      message.innerHTML = "I am feeling Great! 😊";
+    });
+
+    // Sad Button
+    sadBtn.addEventListener("click", function () {
+      document.body.style.backgroundColor = "blue";
+      message.innerHTML = "I am feeling down today. 😢";
+      message.style.color = "white";
+    });
+
+    // Angry Button
+    angryBtn.addEventListener("click", function () {
+      document.body.style.backgroundColor = "red";
+      message.innerHTML = "I am frustrated! 😡";
+      message.style.color = "white";
+    });
+
+    // Sleepy Button
+    sleepyBtn.addEventListener("click", function () {
+      document.body.style.backgroundColor = "#4B0082"; 
+      message.innerHTML = "I need a nap. 😴";
+      message.style.color = "white";
+    });
+  </script>
+
+</body>
+</html>
