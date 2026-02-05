@@ -1,138 +1,147 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Email & Password Checker</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form Validation</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f6ff;
-      text-align: center;
-      padding: 40px;
-    }
-
-    .box {
-      background: white;
-      padding: 30px;
-      width: 400px;
-      margin: auto;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    input {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 16px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-
-    .success {
-      color: green;
-      font-weight: bold;
-    }
-
-    .error {
-      color: red;
-      font-weight: bold;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="box">
-    <h2>Valid Email & Password Checker</h2>
-
-    <input type="text" id="email" placeholder="Enter Email">
-    <input type="password" id="password" placeholder="Enter Password">
-
-    <br><br>
-    <button onclick="validate()">Check</button>
-
-    <p id="emailResult"></p>
-    <p id="passwordResult"></p>
-  </div>
-
-  <script>
-    function validate() {
-      let email = document.getElementById("email").value;
-      let password = document.getElementById("password").value;
-
-      let emailResult = document.getElementById("emailResult");
-      let passwordResult = document.getElementById("passwordResult");
-
-      emailResult.innerHTML = "";
-      passwordResult.innerHTML = "";
-
-      // ---------- Email Validation ----------
-      let emailErrors = [];
-
-      if (!/[A-Z]/.test(email)) {
-        emailErrors.push("❌ Email must contain at least one uppercase letter");
-      }
-      if (!/[a-z]/.test(email)) {
-        emailErrors.push("❌ Email must contain at least one lowercase letter");
-      }
-      if (!email.includes("@")) {
-        emailErrors.push("❌ Email must include '@'");
-      }
-      if (!email.endsWith(".com")) {
-        emailErrors.push("❌ Email must end with '.com'");
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f6ff;
+        text-align: center;
+        padding: 40px;
+        background: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4")
+          no-repeat center/cover;
       }
 
-      if (emailErrors.length === 0) {
-        alert("✅ Valid email address!");
-        emailResult.innerHTML = "✅ Valid email address!";
-        emailResult.className = "success";
-      } else {
-        alert(emailErrors.join("\n"));
-        emailResult.innerHTML = emailErrors.join("<br>");
-        emailResult.className = "error";
+      .box {
+        background: white;
+        padding: 30px;
+        width: 400px;
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
 
-      // ---------- Password Validation ----------
-      let passwordErrors = [];
-
-      if (password.length < 8) {
-        passwordErrors.push("❌ Password must be at least 8 characters long");
-      }
-      if (!/^[A-Za-z]+$/.test(password)) {
-        passwordErrors.push("❌ Password must not contain numbers or special characters");
-      }
-      if (!/[A-Z]/.test(password)) {
-        passwordErrors.push("❌ Password must contain at least one uppercase letter");
-      }
-      if (!/[a-z]/.test(password)) {
-        passwordErrors.push("❌ Password must contain lowercase letters");
+      input {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 16px;
       }
 
-      if (passwordErrors.length === 0) {
-        alert("✅ Password is Strong!");
-        passwordResult.innerHTML = "✅ Password is Strong!";
-        passwordResult.className = "success";
-      } else {
-        alert("❌ Password is Weak!");
-        passwordResult.innerHTML = "❌ Password is Weak!<br>" + passwordErrors.join("<br>");
-        passwordResult.className = "error";
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
       }
-    }
-  </script>
 
-</body>
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .success {
+        color: green;
+        font-weight: bold;
+      }
+
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <h2>Valid Email & Password Checker</h2>
+
+      <input type="text" id="email" placeholder="Enter Email" />
+      <input type="password" id="password" placeholder="Enter Password" />
+
+      <br /><br />
+      <button onclick="validate()">Check</button>
+
+      <p id="emailResult"></p>
+      <p id="passwordResult"></p>
+    </div>
+
+    <script>
+      function validate() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        let emailResult = document.getElementById("emailResult");
+        let passwordResult = document.getElementById("passwordResult");
+
+        emailResult.innerHTML = "";
+        passwordResult.innerHTML = "";
+
+        //Email
+        let emailErrors = [];
+
+        if (!/[A-Z]/.test(email)) {
+          emailErrors.push(
+            "❌ Email must contain at least one uppercase letter",
+          );
+        }
+        if (!/[a-z]/.test(email)) {
+          emailErrors.push(
+            "❌ Email must contain at least one lowercase letter",
+          );
+        }
+        if (!email.includes("@")) {
+          emailErrors.push("❌ Email must include '@'");
+        }
+        if (!email.endsWith(".com")) {
+          emailErrors.push("❌ Email must end with '.com'");
+        }
+
+        if (emailErrors.length === 0) {
+          alert("✅ Valid email address!");
+          emailResult.innerHTML = "✅ Valid email address!";
+          emailResult.className = "success";
+        } else {
+          alert(emailErrors.join("\n"));
+          emailResult.innerHTML = emailErrors.join("<br>");
+          emailResult.className = "error";
+        }
+
+        // Password
+        let passwordErrors = [];
+
+        if (password.length < 8) {
+          passwordErrors.push("❌ Password must be at least 8 characters long");
+        }
+        if (!/^[A-Za-z]+$/.test(password)) {
+          passwordErrors.push(
+            "❌ Password must not contain numbers or special characters",
+          );
+        }
+        if (!/[A-Z]/.test(password)) {
+          passwordErrors.push(
+            "❌ Password must contain at least one uppercase letter",
+          );
+        }
+        if (!/[a-z]/.test(password)) {
+          passwordErrors.push("❌ Password must contain lowercase letters");
+        }
+
+        if (passwordErrors.length === 0) {
+          alert("✅ Password is Strong!");
+          passwordResult.innerHTML = "✅ Password is Strong!";
+          passwordResult.className = "success";
+        } else {
+          alert("❌ Password is Weak!");
+          passwordResult.innerHTML =
+            "❌ Password is Weak!<br>" + passwordErrors.join("<br>");
+          passwordResult.className = "error";
+        }
+      }
+    </script>
+  </body>
 </html>
