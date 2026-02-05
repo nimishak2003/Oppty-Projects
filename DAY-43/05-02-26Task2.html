@@ -1,51 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Live Counter</title>
-  <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      margin-top: 50px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Counter</title>
+    <style>
+      body {
+        text-align: center;
+        margin-top: 50px;
+        font-family: Arial, Arial, Helvetica, sans-serif;
+        background: url("https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=1600&q=80")
+          no-repeat center/cover;
+        margin: 0;
+        width: 100%;
+      }
 
-    #count {
-      font-size: 50px;
-      margin: 20px;
-      color: green;
-    }
+      #count {
+        font-size: 50px;
+        color: green;
+        margin-bottom: 15px;
+      }
 
-    button {
-      padding: 10px 20px;
-      font-size: 20px;
-      margin: 10px;
-      cursor: pointer;
-    }
-  </style>
-</head>
+      .box {
+        background: linear-gradient(
+          135deg,
+          rgb(243, 199, 199),
+          #c8f7fe,
+          #a3d1ff
+        );
+        width: min(700px, 95%);
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        margin-top: 230px;
+      }
 
-<body>
+      button {
+        padding: 10px 20px;
+        border: none;
+        margin: 10px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
 
-  <h2>Live Counter</h2>
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+      }
 
-  <div id="count">0</div>
+      .btn-minus {
+        background: #f97316;
+        color: white;
+      }
+      .btn-plus {
+        background: #3b82f6;
+        color: white;
+      }
+      .btn-reset {
+        background: #111827;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
 
-  <button onclick="decrement()">-</button>
-  <button onclick="increment()">+</button>
+      <h1>Live Counter</h1>
 
-  <script>
-    let count = 0;
+      <div id="count">0</div>
 
-    function increment() {
-      count++;
-      document.getElementById("count").innerText = count;
-    }
+      <button class="btn-minus" onclick="update('dec')">-</button>
+      <button class="btn-plus" onclick="update('inc')">+</button>
+      <button class="btn-reset" onclick="update('reset')">reset</button>
 
-    function decrement() {
-      count--;
-      document.getElementById("count").innerText = count;
-    }
-  </script>
+    </div>
 
-</body>
+    <script>
+
+      let count = 0;
+
+      function update(type) {
+        switch (type) {
+          case "inc":
+            for (let i = 0; i < 1; i++) {
+              count++;
+            }
+            break;
+
+          case "dec":
+            for (let i = 0; i < 1; i++) {
+              count--;
+            }
+            break;
+
+          case "reset":
+            for (let i = 0; i < 1; i++) {
+              count =0;
+            }
+            break;
+        }
+
+        document.getElementById("count").innerText = count;
+      }
+      
+    </script>
+  </body>
 </html>

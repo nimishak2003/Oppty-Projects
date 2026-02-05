@@ -6,31 +6,35 @@
     <title>Hide & Show</title>
     <style>
       body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: url("https://images.unsplash.com/photo-1548667512-1300dc2b94bc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTZ8fHxlbnwwfHx8fHw%3D")
-          no-repeat center/cover;
         text-align: center;
+        margin-top: 50px;
+        font-family: Arial, Arial, Helvetica, sans-serif;
+        background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80")
+          no-repeat center/cover;
         margin: 0;
-        padding: 30px 10px;
         width: 100%;
       }
 
-      h1 {
-        margin-bottom: 50px;
+      .text {
+        font-size: 20px;
+        color: rgb(180, 180, 199);
+        margin: 10px;
+        font-weight: 200;
       }
 
       .box {
-        background: white;
-        width: min(700px, 75%);
+        background: linear-gradient(95deg, #6fa8ae, #26405a);
+        width: min(700px, 95%);
         margin: 20px auto;
-        padding: 20px; 
+        padding: 20px;
         border-radius: 16px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        justify-content: center;
+        margin-top: 250px;
       }
 
       button {
-        padding: 10px 18px;
+        padding: 10px 20px;
+        margin: 5px;
         border: none;
         border-radius: 12px;
         cursor: pointer;
@@ -45,14 +49,6 @@
         box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
       }
 
-      #img {
-        width: 100px;
-        height: 100px;
-        margin: 18px 0;
-        transition: opacity 0.4s ease; 
-        margin-bottom: 50px;
-      }
-
       .btn-hide {
         background: #ef4444;
         color: white;
@@ -63,33 +59,40 @@
       }
     </style>
   </head>
-
   <body>
+
     <div class="box">
+
       <h1>Hide & Show</h1>
 
-      <img src="assets/avatar.jpg" id="img" alt="Avatar-img" />
+      <p class="text">
+        Web development involves creating responsive and interactive websites
+        using HTML, CSS, and JavaScript.
+      </p>
 
-      <button class="btn-hide" onclick="hideText()">Hide</button>
-      <button class="btn-show" onclick="showText()">Show</button>
+      <button class="btn-hide" onclick="toggle('hide')">Hide</button>
+      <button class="btn-show" onclick="toggle('show')">Show</button>
+
     </div>
 
     <script>
-      function hideText() {
-        const text = document.getElementById("text");
-        text.style.opacity = "0"; // fade out smoothly
-        setTimeout(() => {
-          text.style.display = "none"; // fully remove after fade
-        }, 400); // matches CSS transition time
-      }
 
-      function showText() {
-        const text = document.getElementById("text");
-        text.style.display = "block"; // bring it back
-        setTimeout(() => {
-          text.style.opacity = "1"; // fade in smoothly
-        }, 10);
+      function toggle(action) {
+        let elements = document.getElementsByClassName("text");
+
+        for (let i = 0; i < elements.length; i++) {
+          switch (action) {
+            case "hide":
+              elements[i].style.display = "none";
+              break;
+
+            case "show":
+              elements[i].style.display = "block";
+              break;
+          }
+        }
       }
+      
     </script>
   </body>
 </html>
