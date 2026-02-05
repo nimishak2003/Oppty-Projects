@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task</title>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7ff;
+      text-align: center;
+      margin: 0;
+      padding: 30px 10px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background: white;
+      width: min(700px, 95%);
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    /* ------------------ 1) Hide & Show ------------------ */
+    #text {
+      font-size: 24px;
+      margin: 18px 0;
+      color: #1e3a8a;
+      transition: opacity 0.4s ease; /* smooth animation */
+    }
+
+    .btn-hide { background: #ef4444; color: white; }
+    .btn-show { background: #22c55e; color: white; }
+
+    /* ------------------ 2) Counter ------------------ */
+    #count {
+      font-size: 60px;
+      margin: 15px 0;
+      color: #16a34a;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-minus { background: #f97316; color: white; }
+    .btn-plus  { background: #3b82f6; color: white; }
+    .btn-reset { background: #111827; color: white; }
+
+    #warning {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #dc2626;
+      min-height: 20px;
+    }
+
+    /*  3) Image Slider \ */
+    .slider-wrap {
+      margin-top: 10px;
+    }
+
+    #slider {
+      width: min(520px, 95%);
+      height: 300px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+      opacity: 1;
+      transition: opacity 0.6s ease; /* smooth fade animation */
+    }
+
+    .slider-buttons {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-prev { background: #6d28d9; color: white; }
+    .btn-next { background: #0ea5e9; color: white; }
+    .btn-stop { background: #334155; color: white; }
+    .btn-play { background: #10b981; color: white; }
+
+    #status {
+      margin-top: 10px;
+      color: #334155;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>HTML • CSS • JS Tasks</h1>
+
+  <!-- ✅ 1) Hide & Show -->
+  <div class="box">
+    <h2>1) Hide & Show (Smooth)</h2>
+
+    <p id="text">Hello! I can be hidden or shown 😊</p>
+
+    <button class="btn-hide" onclick="hideText()">Hide</button>
+    <button class="btn-show" onclick="showText()">Show</button>
+  </div>
+
+  <!-- ✅ 2) Live Counter with No Negative -->
+  <div class="box">
+    <h2>2) Live Counter (No Negative)</h2>
+
+    <div id="count">0</div>
+
+    <button class="btn-minus" onclick="decrement()">-</button>
+    <button class="btn-plus" onclick="increment()">+</button>
+    <button class="btn-reset" onclick="resetCounter()">Reset</button>
+
+    <div id="warning"></div>
+  </div>
+
+  <!-- ✅ 3) Auto Image Slider with Smooth Fade -->
+  <div class="box">
+    <h2>3) Auto Image Slider (Smooth Fade)</h2>
+
+    <div class="slider-wrap">
+      <img id="slider" src="https://picsum.photos/id/1015/900/500" alt="slider image" />
+
+      <div class="slider-buttons">
+        <button class="btn-prev" onclick="prevImage()">Previous</button>
+        <button class="btn-next" onclick="nextImage()">Next</button>
+
+        <button class="btn-stop" onclick="stopAuto()">Stop Auto</button>
+        <button class="btn-play" onclick="startAuto()">Start Auto</button>
+      </div>
+
+      <div id="status">Auto: ON (changes every 2 seconds)</div>
+    </div>
+  </div>
+
+  <script>
+    /* ------------------ 1) Hide & Show ------------------ */
+    function hideText() {
+      const text = document.getElementById("text");
+      text.style.opacity = "0";           // fade out smoothly
+      setTimeout(() => {
+        text.style.display = "none";      // fully remove after fade
+      }, 400); // matches CSS transition time
+    }
+
+    function showText() {
+      const text = document.getElementById("text");
+      text.style.display = "block";       // bring it back
+      setTimeout(() => {
+        text.style.opacity = "1";         // fade in smoothly
+      }, 10);
+    }
+
+    /* ------------------ 2) Counter (No Negative) ------------------ */
+    let count = 0;
+
+    function updateCountUI() {
+      const countDiv = document.getElementById("count");
+      countDiv.innerText = count;
+
+      // small pop animation
+      countDiv.style.transform = "scale(1.08)";
+      setTimeout(() => {
+        countDiv.style.transform = "scale(1)";
+      }, 150);
+    }
+
+    function increment() {
+      document.getElementById("warning").innerText = "";
+      count++;
+      updateCountUI();
+    }
+
+    function decrement() {
+      if (count === 0) {
+        document.getElementById("warning").innerText = "🔒 Counter cannot go below 0!";
+        return; // stop here (do not decrement)
+      }
+      document.getElementById("warning").innerText = "";
+      count--;
+      updateCountUI();
+    }
+
+    function resetCounter() {
+      count = 0;
+      document.getElementById("warning").innerText = "";
+      updateCountUI();
+    }
+
+    /* ------------------ 3) Auto Image Slider ------------------ */
+    const images = [
+      "https://picsum.photos/id/1015/900/500",
+      "https://picsum.photos/id/1016/900/500",
+      "https://picsum.photos/id/1018/900/500",
+      "https://picsum.photos/id/1020/900/500",
+      "https://picsum.photos/id/1024/900/500"
+    ];
+
+    let index = 0;
+    let intervalId = null; // will store setInterval reference
+
+    function setImage(newIndex) {
+      const img = document.getElementById("slider");
+
+      img.style.opacity = "0"; // fade out
+      setTimeout(() => {
+        index = newIndex;
+        img.src = images[index];
+        img.style.opacity = "1"; // fade in
+      }, 300);
+    }
+
+    function nextImage() {
+      let newIndex = index + 1;
+      if (newIndex >= images.length) {
+        newIndex = 0;
+      }
+      setImage(newIndex);
+    }
+
+    function prevImage() {
+      let newIndex = index - 1;
+      if (newIndex < 0) {
+        newIndex = images.length - 1;
+      }
+      setImage(newIndex);
+    }
+
+    function startAuto() {
+      if (intervalId !== null) return; // already running
+
+      intervalId = setInterval(() => {
+        nextImage();
+      }, 2000);
+
+      document.getElementById("status").innerText = "Auto: ON (changes every 2 seconds)";
+    }
+
+    function stopAuto() {
+      clearInterval(intervalId);
+      intervalId = null;
+      document.getElementById("status").innerText = "Auto: OFF";
+    }
+
+    // ✅ Start auto slider when page loads
+    startAuto();
+  </script>
+
+</body>
+</html>

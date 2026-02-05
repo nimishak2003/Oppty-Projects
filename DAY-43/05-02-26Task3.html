@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Slider</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    img {
+      width: 300px;
+      height: 200px;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Image Slider</h2>
+
+  <img id="slider" src="https://picsum.photos/id/1015/300/200">
+
+  <br>
+
+  <button onclick="prevImage()">Previous</button>
+  <button onclick="nextImage()">Next</button>
+
+  <script>
+    let images = [
+      "https://picsum.photos/id/1015/300/200",
+      "https://picsum.photos/id/1016/300/200",
+      "https://picsum.photos/id/1018/300/200"
+    ];
+
+    let index = 0;
+
+    function nextImage() {
+      index++;
+      if (index >= images.length) {
+        index = 0;
+      }
+      document.getElementById("slider").src = images[index];
+    }
+
+    function prevImage() {
+      index--;
+      if (index < 0) {
+        index = images.length - 1;
+      }
+      document.getElementById("slider").src = images[index];
+    }
+  </script>
+
+</body>
+</html>
