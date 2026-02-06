@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prime </title>
+
+     <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #c3ecff, #f5d6ff);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      font-size: 18px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #6c63ff;
+      color: white;
+    }
+
+    button:hover {
+      background: #554ce6;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+    <div class="box">
+    <h2>Number Checker</h2>
+
+    <input type="number" id="num" placeholder="Enter a number" />
+
+    <button onclick="check('prime')">Prime Checker</button>
+    
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function check(type) {
+      let number = document.getElementById("num").value;
+      let result = document.getElementById("result");
+
+      if (number === "") {
+        result.innerHTML = "❌ Please enter a number";
+        return;
+      }
+
+      number = Number(number);
+
+      switch (type) {
+        case "prime":
+          result.innerHTML = isPrime(number);
+          break;
+
+          
+        default:
+          result.innerHTML = "Invalid option";
+      }
+    }
+    
+
+      // PRIME NUMBER FUNCTION
+    function isPrime(num) {
+      if (num <= 1) return "❌ Not a Prime Number";
+
+      for (let i = 2; i < num; i++) {
+        if (num % i === 0) {
+          return "❌ Not a Prime Number";
+        }
+      }
+      return "✅ Prime Number";
+    }
+
+  </script>
+    
+</body>
+</html>

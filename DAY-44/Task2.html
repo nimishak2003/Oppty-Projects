@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime Number Checker</title>
+
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        background: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80")
+          no-repeat center / cover;
+      }
+
+      .box {
+        width: min(520px, 92%);
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      input {
+        flex: 1;
+        min-width: 180px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        outline: none;
+        font-size: 16px;
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+      }
+
+      input::placeholder {
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      button {
+        padding: 12px 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        color: #0b1220;
+        background: linear-gradient(135deg, #fbd786, #f7797d);
+        transition: transform 0.12s ease;
+      }
+
+      button:active {
+        transform: scale(0.98);
+      }
+
+      .actions {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .secondary {
+        background: linear-gradient(135deg, #a1ffce, #faffd1);
+      }
+
+      #msg {
+        margin-top: 16px;
+        padding: 14px;
+        border-radius: 14px;
+        font-size: 16px;
+        text-align: center;
+        display: none;
+      }
+
+      .ok {
+        display: block;
+        background: rgba(0, 255, 140, 0.18);
+        border: 1px solid rgba(0, 255, 140, 0.35);
+        color: #eafff5;
+      }
+
+      .bad {
+        display: block;
+        background: rgba(255, 0, 90, 0.18);
+        border: 1px solid rgba(255, 0, 90, 0.35);
+        color: #ffe9f0;
+      }
+
+      .warn {
+        display: block;
+        background: rgba(255, 200, 0, 0.18);
+        border: 1px solid rgba(255, 200, 0, 0.35);
+        color: #fff7d6;
+      }
+
+      .hint {
+        margin-top: 10px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.85);
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <h1>Prime Number Checker</h1>
+
+      <div class="row">
+        <input id="num" type="number" placeholder="Enter a number " />
+        <button onclick="checkPrime()">Check</button>
+      </div>
+
+      <div class="actions">
+        <button class="secondary" onclick="resetAll()">Reset</button>
+      </div>
+
+      <div id="msg"></div>
+
+      <div class="hint">Tip: Prime numbers are > 1 and divisible only by 1 and itself.</div>
+    </div>
+
+    <script>
+      const numInput = document.getElementById("num");
+      const msg = document.getElementById("msg");
+
+      // Press Enter to check
+      numInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") checkPrime();
+      });
+
+      // Live border validation while typing
+      numInput.addEventListener("input", () => {
+        const value = Number(numInput.value);
+
+        if (numInput.value === "") {
+          numInput.style.borderColor = "rgba(255,255,255,0.35)";
+          hideMsg();
+          return;
+        }
+
+        if (!Number.isInteger(value) || value < 0) {
+          numInput.style.borderColor = "rgba(255,0,90,0.85)";
+          showMsg("⚠️ Please enter a valid whole number (0 or more).", "warn");
+          return;
+        }
+
+        numInput.style.borderColor = "rgba(0,255,140,0.85)";
+        hideMsg();
+      });
+
+      function isPrime(n) {
+        if (n <= 1) return false; // 0,1 and negatives are NOT prime
+        if (n === 2) return true; // 2 is prime
+        if (n % 2 === 0) return false; // even numbers > 2 are not prime
+
+        // Check divisibility only up to sqrt(n)
+        for (let i = 3; i * i <= n; i += 2) {
+                     if (n % i === 0) return false;
+        }
+        return true;
+      }
+
+      function checkPrime() {
+        const raw = numInput.value;
+
+        if (raw === "") {
+          showMsg("⚠️ Please enter a number first.", "warn");
+          numInput.focus();
+          return;
+        }
+
+        const n = Number(raw);
+
+        if (!Number.isInteger(n) || n < 0) {
+          showMsg("⚠️ Only whole numbers (0 or more) are allowed.", "warn");
+          return;
+        }
+
+        if (isPrime(n)) {
+          showMsg(`✅ ${n} is a Prime Number.`, "ok");
+        } else {
+          showMsg(`❌ ${n} is NOT a Prime Number.`, "bad");
+        }
+      }
+
+      function resetAll() {
+        numInput.value = "";
+        numInput.style.borderColor = "rgba(255,255,255,0.35)";
+        hideMsg();
+        numInput.focus();
+      }
+
+      function showMsg(text, type) {
+        msg.className = "";
+        msg.textContent = text;
+        msg.classList.add(type);
+        msg.style.display = "block";
+      }
+
+      function hideMsg() {
+        msg.style.display = "none";
+        msg.className = "";
+        msg.textContent = "";
+      }
+    </script>
+  </body>
+</html>
