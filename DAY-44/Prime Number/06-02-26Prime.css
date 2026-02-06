@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  place-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80")
+    no-repeat center / cover;
+  padding: 20px;
+}
+
+.box {
+  width: min(520px, 95%);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  margin-top: 250px;
+}
+
+h2 {
+  margin: 14px;
+  font-size: 26px;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input {
+  flex: 1;
+  min-width: 220px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+}
+
+input:focus {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #22c55e, #40925e);
+  color: white;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+.result {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 16px;
+  text-align: center;
+}
+
+.ok {
+  border-color: rgba(34, 197, 94, 0.55);
+}
+
+.bad {
+  border-color: rgba(239, 68, 68, 0.55);
+}
+
+.hint {
+  margin-top: 10px;
+  font-size: 15px;
+  color: rgba(13, 11, 11, 0.65);
+  text-align: center;
+}
