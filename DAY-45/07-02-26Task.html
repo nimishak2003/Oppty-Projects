@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-    <link rel="stylesheet" href="07-02-26Task.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="07-02-26Task.css" />
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body>
 
-    <div class="todo-box">
-        <h2>My Tasks</h2>
+  <div class="chat-box">
+    <div class="header">TO-DO-LIST</div>
 
-        <div class="input-area">
-            <input type="text" id="taskInput" placeholder="What needs to be done?">
-            <button onclick="addTask()">Add</button>
-        </div>
+    <div id="chat"></div>
 
-        <ul id="taskList"></ul>
+    <div class="input-area">
+
+      <input type="text" id="taskInput" placeholder="Type your task...">
+
+      <button onclick="addTextTask()">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+
+      <button onclick="startVoice()">
+        <i class="fa-solid fa-microphone"></i>
+      </button>
 
     </div>
+  </div>
 
-    <script src="07-02-26Task.js"></script>
-    
+  <script src="07-02-26Task.js"></script>
 </body>
 </html>

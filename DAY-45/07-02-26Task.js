@@ -1,35 +1,58 @@
-function addTask() {
-  let taskInput = document.getElementById("taskInput");
-  let taskText = taskInput.value.trim();
+const chat = document.getElementById("chat");
+const input = document.getElementById("taskInput");
 
-  if (taskText === "") {
-    alert("Please enter a task");
-    return;
-  }
+function addTask(text, type) {
+  const task = document.createElement("div");
+  task.className = "task";
 
-  let li = document.createElement("li");
-
-  li.innerHTML = `
-    <span class ="task-text">${taskText} </span>
-    <div class="actions">
+  task.innerHTML = `
+    <div contenteditable="false">${text}</div>
+    <small>${type}</small>
+    <div class="icons">
       <i class="fa-solid fa-pen edit" onclick="editTask(this)"></i>
       <i class="fa-solid fa-trash delete" onclick="deleteTask(this)"></i>
     </div>
   `;
 
-  document.getElementById("taskList").appendChild(li);
-  taskInput.value = "";
+  chat.appendChild(task);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function addTextTask() {
+  if (input.value.trim() === "") return;
+  addTask(input.value, "⌨️ Typed");
+  input.value = "";
 }
 
 function deleteTask(icon) {
-  icon.parentElement.parentElement.remove();
+  icon.closest(".task").remove();
 }
 
 function editTask(icon) {
-  let taskSpan = icon.parentElement.previousElementSibling;
-  let newTask = prompt("Edit task:", taskSpan.innerText);
+  const text = icon.closest(".task").querySelector("div");
 
-  if (newTask !== null && newTask.trim() !== "") {
-    taskSpan.innerText = newTask;
+  if (text.isContentEditable) {
+    text.contentEditable = "false";
+    icon.classList.replace("fa-check", "fa-pen");
+  } else {
+    text.contentEditable = "true";
+    text.focus();
+    icon.classList.replace("fa-pen", "fa-check");
   }
 }
+
+//Voice Input 
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+recognition.lang = "en-US";
+
+function startVoice() {
+  recognition.start();
+}
+
+recognition.onresult = (event) => {
+  const voiceText = event.results[0][0].transcript;
+  addTask(voiceText, "🎤 Voice");
+};
