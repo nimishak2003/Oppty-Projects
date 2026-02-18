@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Loan</title>
+    <link rel="stylesheet" href="11-02-26Task.css" />
+
+</head>
+<body>
+    <div class="card">
+      <h1>Bank Loan EMI Calculator</h1>
+
+      <label for="principal">Loan Amount (P):</label>
+      <input type="number" id="principal" placeholder="Enter the Amount" />
+
+      <label for="rate">Annual Interest Rate (%):</label>
+      <input type="number" id="rate" placeholder="Enter the Interest" />
+
+      <label for="months">Tenure (months):</label>
+      <input type="number" id="months" placeholder="Enter the Months"  />
+
+      <button id="btn">Calculate EMI</button>
+
+      <div class="error" id="error"></div>
+      <div class="result" id="result">Monthly EMI: --</div>
+      <div class="hint">Formula: EMI = P × r × (1+r)^n / ((1+r)^n − 1)</div>
+    </div>
+
+    <script src="11-02-26Task.js"></script>
+
+</body>
+</html>

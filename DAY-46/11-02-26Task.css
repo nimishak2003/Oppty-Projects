@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  /* background: radial-gradient(circle at top, #8fd3f4, #1f4d7a 65%, #0a2a45); */
+  background: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4")
+          no-repeat center/cover;
+  padding: 18px;
+}
+
+.card {
+  width: min(520px, 92vw);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  padding: 28px 26px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+h1 {
+  margin: 0 0 18px;
+  text-align: center;
+  font-size: 34px;
+  letter-spacing: 0.2px;
+  color: #1c1c1c;
+  background: linear-gradient(1deg, #ff7a18, #1e90ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        
+}
+
+label {
+  display: block;
+  margin: 16px 0 8px;
+  font-weight: 700;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #d0d0d0;
+  outline: none;
+  background: #fff;
+}
+
+input:focus {
+  border-color: #2d6da3;
+  box-shadow: 0 0 0 3px rgba(45, 109, 163, 0.18);
+}
+
+button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #2c5f8a, #2f73a8);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+.result {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: #222;
+}
+
+.hint {
+  margin-top: 6px;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
+
+.error {
+  margin-top: 14px;
+  text-align: center;
+  font-weight: 700;
+  color: #c0392b;
+}
