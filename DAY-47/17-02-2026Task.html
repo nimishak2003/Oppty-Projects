@@ -1,245 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cocktail Bar Menu</title>
-
-  <link rel="stylesheet" href="17-02-2026Task.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridge</title>
+    <link rel="stylesheet" href="17-02-2026Task.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
-  <!-- Top Bar -->
-  <header class="topbar" id="top">
-    <a class="brand" href="#top" aria-label="Home">
-      <span class="brand__mark">B</span>
-      <span class="brand__text">Bridge Bar</span>
-    </a>
-
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a class="is-active" href="#menu">Menu</a>
-      <a href="#reserve">Reservations</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
-
-  <!-- Mobile Drawer -->
-  <aside class="drawer" id="drawer" aria-hidden="true">
-    <div class="drawer__head">
-      <div class="drawer__title">Menu</div>
-      <button class="drawer__close" id="drawerClose" aria-label="Close menu">✕</button>
+    <div class="conatiner1">
+        <div class="nav-container">
+            <div>
+                <img src="Assets/Logo-test.png" alt="Logo" >
+            </div>
+            <div>
+                <nav>
+                    <a href="#Home">Home</a>
+                    <a href="#About">About</a>
+                    <a href="#Menu">Menu</a>
+                    <a href="#Reservations">Reservations</a>
+                    <a href="#contact">contact</a>
+                </nav>
+            </div>
+            <div>
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <button class="btn">Book a table</button>
+            </div>
+        </div>
+        <div class="hero">
+            <h5>Exclusive drink service</h5>
+            <h1>Cocktail Stage Evenings</h1>
+            <button>View more</button>
+        </div>
     </div>
-    <div class="drawer__links">
-      <a href="#about" class="drawerLink">About</a>
-      <a href="#menu" class="drawerLink">Menu</a>
-      <a href="#reserve" class="drawerLink">Reservations</a>
-      <a href="#contact" class="drawerLink">Contact</a>
-    </div>
-  </aside>
-
-  <div class="backdrop" id="backdrop" aria-hidden="true"></div>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <p class="kicker">Our choice</p>
-      <h1 class="title">Menu</h1>
-      <p class="subtitle">
-        Crafted drinks, curated wines, and bold craft beers — served all week.
-      </p>
-      <a class="cta" href="#menu">Explore categories</a>
-    </div>
-  </section>
-
-  <!-- About (small filler) -->
-  <section class="section" id="about">
-    <div class="wrap">
-      <div class="split">
+    <div class="container2">
         <div>
-          <p class="kicker">The vibe</p>
-          <h2 class="h2">Cocktails. Music. Late nights.</h2>
-          <p class="p">
-            This page is a clean HTML/CSS/JS practice clone inspired by the Bridge demo’s “Menu” layout.
-            Replace text/images however you want.
-          </p>
+
         </div>
-        <div class="card">
-          <div class="card__row">
-            <div class="pill">Mon–Sun</div>
-            <div class="muted">09:00 AM – 09:00 PM</div>
-          </div>
-          <div class="card__row">
-            <div class="pill">Location</div>
-            <div class="muted">1611 Linden Avenue, London</div>
-          </div>
-          <div class="card__row">
-            <div class="pill">Call</div>
-            <div class="muted">301-382-4311, 301-461-9671</div>
-          </div>
+        <div class="container2-flex">
+            <div class="left-container">
+                <h5>Visit a bar</h5>
+                <h2>Open hours</h2><br><br>
+                <p>Monday – Friday: <br><span>4:00 pm – 1:00 am</span></p><br>
+                <p>Saturday: <br><span>4:00 pm – 3:00 am</span></p><br>
+                <p>Sunday: <br><span>4:00 pm – 2:00 am</span></p><br><br>
+                <span>Visit us</span>
+            </div>
+            <div>
+                <img class="image" src="Assets/single-img-1.jpg" alt="Single-img">
+            </div>
+            <div class="right-container">
+                <h5>The best offer</h5>
+                <h2>Happy hour</h2><br><br>
+                <p>Monday – Sunday:<br> <span>4:00 pm – 7:00 pm</span></p><br>
+                <p>20% off all wines by the glass<br>15% off all Cocktails</p><br>
+                <p>25% off selected craft beer<br>10% off all Spirits</p><br><br>
+                <span>View more</span>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
-
-  <!-- Menu -->
-  <section class="section section--menu" id="menu">
-    <div class="wrap">
-      <div class="menuHead">
-        <p class="kicker">Choose a section</p>
-        <h2 class="h2">Today’s selections</h2>
-      </div>
-
-      <!-- Tabs -->
-      <div class="tabs" role="tablist" aria-label="Menu categories">
-        <button class="tab is-active" data-target="cocktails" role="tab" aria-selected="true">Cocktails</button>
-        <button class="tab" data-target="wine" role="tab" aria-selected="false">Wine selection</button>
-        <button class="tab" data-target="beer" role="tab" aria-selected="false">Craft beer</button>
-      </div>
-
-      <!-- Panels -->
-      <div class="panel is-active" id="cocktails" role="tabpanel">
-        <div class="panelHead">
-          <p class="kicker">Our choice</p>
-          <h3 class="h3">Cocktails</h3>
+    <div class="container3">
+        <img class="image-1" src="Assets/about-title-img.jpg" alt="container3-image">
+    </div>
+    <div class="container4">
+        <h2>We recommend</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit<br>
+             sed eiu smod tempor incididunt ut labore etdo
+        </p>
+        <div>
+            <h4>Coco spice........................$19</h4>
+            <p>Captain Morgan spiced rum, pineaple</p>
+            <h4>Coco spice........................$19</h4>
+            <p>Captain Morgan spiced rum, pineaple</p>
+            <h4>Coco spice........................$19</h4>
+            <p>Captain Morgan spiced rum, pineaple</p>
+            <h4>Coco spice........................$19</h4>
+            <p>Captain Morgan spiced rum, pineaple</p>
         </div>
-
-        <div class="menuGrid">
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Royal Arrival</h4>
-              <span class="menuItem__price">$19</span>
-            </div>
-            <p class="menuItem__desc">Spiced rum, pineapple, citrus, ginger finish</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Tequila Sunrise</h4>
-              <span class="menuItem__price">$14</span>
-            </div>
-            <p class="menuItem__desc">Tequila, orange, grenadine, cherry aroma</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Cuba Libre</h4>
-              <span class="menuItem__price">$22</span>
-            </div>
-            <p class="menuItem__desc">Dark rum, fresh lime, cola, mint</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Coco Spice</h4>
-              <span class="menuItem__price">$17</span>
-            </div>
-            <p class="menuItem__desc">Toasted coconut, rum, vanilla, lime</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Savoy Affair</h4>
-              <span class="menuItem__price">$23</span>
-            </div>
-            <p class="menuItem__desc">Spiced rum, herbal bitters, orange peel</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">El Presidente</h4>
-              <span class="menuItem__price">$18</span>
-            </div>
-            <p class="menuItem__desc">Tequila, orange, grenadine, salted rim</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="panel" id="wine" role="tabpanel">
-        <div class="panelHead">
-          <p class="kicker">We recommend</p>
-          <h3 class="h3">Wine selection</h3>
-        </div>
-
-        <div class="menuGrid">
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Léoville-Las Cases</h4>
-              <span class="menuItem__price">$19</span>
-            </div>
-            <p class="menuItem__desc">Saint-Julien, France</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Moscato Cavit</h4>
-              <span class="menuItem__price">$14</span>
-            </div>
-            <p class="menuItem__desc">Chile</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Corton-Charlemagne</h4>
-              <span class="menuItem__price">$22</span>
-            </div>
-            <p class="menuItem__desc">Côte de Beaune, France</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Meiomi Pinot Noir</h4>
-              <span class="menuItem__price">$17</span>
-            </div>
-            <p class="menuItem__desc">California, USA</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Échezeaux Grand Cru</h4>
-              <span class="menuItem__price">$19</span>
-            </div>
-            <p class="menuItem__desc">Burgundy, France</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Harlan Estate</h4>
-              <span class="menuItem__price">$24</span>
-            </div>
-            <p class="menuItem__desc">Santa Lucia Highlands</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="panel" id="beer" role="tabpanel">
-        <div class="panelHead">
-          <p class="kicker">New arrivals</p>
-          <h3 class="h3">Craft beer</h3>
-        </div>
-
-        <div class="menuGrid">
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Yuengling Lager</h4>
-              <span class="menuItem__price">$9</span>
-            </div>
-            <p class="menuItem__desc">Crisp lager, clean finish</p>
-          </article>
-
-          <article class="menuItem reveal">
-            <div class="menuItem__top">
-              <h4 class="menuItem__name">Southern Star</h4>
-              <span class="menuItem__price">$11</span>
-            </div>
-            <p class="menuItem__desc">Hazy IPA, tropical notes</p>
-          </article>
-
-  <script src="17-02-2026Task.js"></script>
+    </div>
 </body>
 </html>
