@@ -1,0 +1,117 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* nav-bar */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+div nav a {
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 20px;
+  color: #ffffff;
+}
+div a {
+  margin: 20px;
+  text-decoration: none;
+  color: #ffffff;
+}
+.buttonn {
+  padding: 10px 30px;
+  margin-right: 20px;
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: transparent;
+}
+
+/* section1 */
+.section1 {
+  background: url("Assets/Reservations-Titleimg.jpg") center/cover no-repeat;
+  height: 100vh;
+  width: 100%;
+}
+.herosec {
+  text-align: center;
+  margin: 220px;
+}
+
+.herosec h1 {
+  font-size: 85px;
+  color: #ffffff;
+  font-family: "Amini";
+}
+
+/* Reservations menu */
+.reservations-menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.reservations-menu select,
+.reservations-menu input {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 15px 20px;
+  color: #fff;
+  min-width: 200px;
+  outline: none;
+}
+.reservations-menu select option {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 15px 20px;
+  color: black;
+  min-width: 200px;
+  outline: none;
+}
+
+.reservations-menu input::placeholder {
+  color: #ddd;
+}
+
+.reservations-menu button {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 15px 35px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.reservations-menu button:hover {
+  background: #fff;
+  color: #000;
+}
+/*section2  */
+.section2 {
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 150px 200px;
+}
+.section2 h3 {
+  font-size: 25px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+.section2 h5 {
+  font-size: 18px;
+}
+.section2 p {
+  font-size: 18px;
+}
+
+.tag{
+    display: grid;
+}
