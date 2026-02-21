@@ -1,0 +1,23 @@
+//scroll arrow
+
+const scrollBtn = document.getElementById("scrollTop");
+
+window.onscroll = function () {
+    if (document.documentElement.scrollTop > 200) {
+        scrollBtn.style.display = "block";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+};
+
+scrollBtn.addEventListener("click", function () {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+//book a table
+function goToPage() {
+    window.location.href="ReservationsPage.html";
+}

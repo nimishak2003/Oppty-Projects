@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="ContactPage.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
   </head>
   <body>
 
@@ -32,7 +33,7 @@
           <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
           <a href="https://x.com/i/flow/login?redirect_after_login=%2Fsearch" class="fa fa-twitter"></a>
           <a href="https://www.instagram.com/?hl=en" class="fa fa-instagram"></a>
-          <button class="button">Book a table</button>
+          <button onclick="goToPage() " class="button">Book a table</button>
         </div>
       </div>
 
@@ -57,46 +58,64 @@
         <p><i class="fa fa-braille"></i>&nbsp;&nbsp;301-382-4311, 301-461-9671</p>
     </div>
 
-    <div class="right-box">
+    <!-- <div class="right-box">
         <form>
             <textarea placeholder="Your Message"></textarea>
             <input type="text" placeholder="Your Name">
             <input type="email" placeholder="Your E-mail">
             <button type="submit">Submit</button>
         </form>
-    </div>
+    </div> -->
+
+    <div class="right-box">
+    <form id="contactForm">
+        <textarea id="message" placeholder="Your Message"></textarea>
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="email" id="email" placeholder="Your E-mail">
+        <button type="submit">Submit</button>
+        <p id="formMessage" style="margin-top:15px;"></p>
+    </form>
+</div>
     </div>
 
     <div class="section3">
         <img class="innermap" src="Assets/Contact-img.jpg" alt=" Inner-map">
     </div>
 
-    <div class="section4">
+    <div class="section6">
+
         <div>
-            <h3>Bridge</h><br><br>
-            <h5>Lorem ipsum dolor sit amet, consect etur<br> dip isicing elit, sed do eiusm</h5><br>
+            <div>
+                <img src="Assets/Logo-img.png" alt="Logo Image" >
+            </div><br>
+            <h5>Lorem ipsum dolor sit amet,<br> consect etur dip isicing elit, sed do<br>eiusm</h5><br>
             <p><i class='fas fa-clock'></i>&nbsp;&nbsp;Mon-Sun: 09am - 09pm</p><br>
             <p><i class="fas fa-location"></i>&nbsp;&nbsp;1611 Linden Avenue, London</p><br>
             <p><i class="fa fa-braille"></i>&nbsp;&nbsp;301-382-4311, 301-461-9671</p><br>
         </div>
 
         <div class="tag">
-            <h3>Pages</h3><br><br>
-            <a href="HomePage.html">Home</a>
-            <a href="ReservationsPage.html">Reservations</a>
-            <a href="MenuPage.html">Menu</a>
-            <a href="ContactPage.html">Contact</a>
+            <h3>Pages</h3><br>
+            <a href="HomePage.html">Home</a><br><br>
+            <a href="ReservationsPage.html">Reservations</a><br><br>
+            <a href="MenuPage.html">Menu</a><br><br>
+            <a href="ContactPage.html">Contact</a><br><br>
         </div>
 
-        <div>
-            <h3>Opening Hours</h3><br><br>
-            <h5>Monday – Friday:<br>10:00am – 01:00am</h5><br><br>
+        <div class="open">
+            <h3>Opening Hours</h3><br>
+            <h5>Monday – Friday:<br>10:00am – 01:00am</h5><br>
             <h5>Monday – Friday:<br>10:00am – 01:00am</h5>
         </div>
-        
+
         <div>
             <h3>Instagram</h3>
         </div>
     </div>
+    </div>
+
+    <button id="scrollTop">↑</button>
+
+    <script src="ContactPage.js"></script>
   </body>
 </html>

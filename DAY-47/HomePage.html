@@ -8,42 +8,77 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
 <body>
     <section class="section1">
-        <div class="nav-bar">
-            <div>
-                <img src="Assets/Logo-img.png" alt="Logo Image" >
-            </div>
-            <div>
-                <nav>
-                    <a href="HomePage.html" target="_blank">Home</a>
-                    <a href="AboutPage.html" target="_blank">About</a>
-                    <a href="MenuPage.html" target="_blank">Menu</a>
-                    <a href="ReservationsPage.html" target="_blank">Reservations</a>
-                    <a href="ContactPage.html" target="_blank">Contact</a>
-                </nav>
-            </div>
 
-            <div>
-                <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
-                <a href="https://x.com/i/flow/login?redirect_after_login=%2Fsearch" class="fa fa-twitter"></a>
-                <a href="https://www.instagram.com/?hl=en" class="fa fa-instagram"></a>
-                <button class="button">Book a table</button>
-            </div>
-        </div>
-      
-        <div class="herosec">
-            <h5>Exclusive drink service</h5>
-            <h1>Cocktail Stage Evenings</h1>
-            <button>View more</button>
-        </div>
-    </section>
-    <div class="section2">
+    <div class="hero-slider">
+        <div class="hero-slide active" style="background-image: url('Assets/Home-Titleimg1.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('Assets/Menu-Titleimg.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('Assets/About-img2.jpg');"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <div class="nav-bar">
         <div>
-
+            <img src="Assets/Logo-img.png" alt="Logo Image">
         </div>
+
+        <div>
+            <nav>
+                <a href="HomePage.html">Home</a>
+                <a href="AboutPage.html">About</a>
+                <a href="MenuPage.html">Menu</a>
+                <a href="ReservationsPage.html">Reservations</a>
+                <a href="ContactPage.html">Contact</a>
+            </nav>
+        </div>
+
+        <div>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <button onclick="goToPage() " class="button">Book a table</button>
+        </div>
+    </div>
+
+    <!-- HERO TEXT -->
+    <div class="herosec">
+        <h5>Exclusive drink service</h5>
+        <h1>Cocktail Stage Evenings</h1>
+        <button class="button">View more</button>
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+</section>
+
+    <div class="section2">
+
+        <div class="sec">
+
+        <form class="reservations-menu">
+            <select>
+                <option>1 Person</option>
+                <option>2 People</option>
+                <option>3 People</option>
+                <option>4 People</option>
+                <option>5 People</option>
+                <option>6 People</option>
+                <option>7 People</option>
+                <option>8 People</option>
+                <option>9 People</option>
+                <option>10 People</option>
+            </select>
+
+            <input type="date">
+            <input type="time">
+
+            <button onclick="goToPage() "  type="submit">Book a Table</button>
+        </form>
+      </div>
+        
         <div class="section2-flex">
             <div class="left-box">
                 <h5>Visit a bar</h5>
@@ -53,9 +88,11 @@
                 <p>Sunday: <br><span>4:00 pm – 2:00 am</span></p><br><br>
                 <span>Visit us</span>
             </div>
+
             <div>
                 <img class="image" src="Assets/Home-img1.jpg" alt="Bar Image">
             </div>
+
             <div class="right-box">
                 <h5>The best offer</h5>
                 <h2>Happy hour</h2><br><br>
@@ -69,7 +106,7 @@
 
     <div class="section3">
         <!-- Image -->
-    </div>
+    </div> 
 
     <div class="section4">
 
@@ -80,7 +117,7 @@
 
         <div class="section4-flex">
             <div class="menu-4">
-                <h4>Coco spice_________________________$19</h4>
+                <h4>Coco Spice_________________________$19</h4>
                 <p>Captain Morgon spiced rum, pineapple.</p><br><br>
 
                 <h4>Tequila Sunrise______________________$14</h4>
@@ -113,30 +150,40 @@
             <img class="section5-img" src="Assets/Home-img5.jpg" alt="image1">
         </div>
     </div>
-    
+
     <div class="section6">
+
         <div>
-            <h3>Bridge</h><br><br>
-            <h5>Lorem ipsum dolor sit amet, consect etur<br> dip isicing elit, sed do eiusm</h5><br>
-            <p><i class='fas fa-clock'></i>&nbsp;&nbsp;Mon-Sun: 09am - 09pm</p><br>
-            <p><i class="fas fa-location"></i>&nbsp;&nbsp;1611 Linden Avenue, London</p><br>
-            <p><i class="fa fa-braille"></i>&nbsp;&nbsp;301-382-4311, 301-461-9671</p><br>
+            <div>
+                <img src="Assets/Logo-img.png" alt="Logo Image" >
+            </div><br>
+            <h5>Lorem ipsum dolor sit amet,<br> consect etur dip isicing elit, sed do<br>eiusm</h5><br>
+            <p><i class='fas fa-clock'></i>&nbsp;&nbsp;Mon-Sun: 09am - 09pm</p>
+            <p><i class="fas fa-location"></i>&nbsp;&nbsp;1611 Linden Avenue, London</p>
+            <p><i class="fa fa-braille"></i>&nbsp;&nbsp;301-382-4311, 301-461-9671</p>
         </div>
+
         <div class="tag">
             <h3>Pages</h3><br>
-            <a href="HomePage.html">Home</a>
-            <a href="ReservationsPage.html">Reservations</a>
-            <a href="MenuPage.html">Menu</a>
-            <a href="ContactPage.html">Contact</a>
+            <a href="HomePage.html">Home</a><br><br>
+            <a href="ReservationsPage.html">Reservations</a><br><br>
+            <a href="MenuPage.html">Menu</a><br><br>
+            <a href="ContactPage.html">Contact</a><br><br>
         </div>
-        <div>
-            <h3>Opening Hours</h3><br><br>
-            <h5>Monday – Friday:<br>10:00am – 01:00am</h5><br><br>
+
+        <div class="open">
+            <h3>Opening Hours</h3><br>
+            <h5>Monday – Friday:<br>10:00am – 01:00am</h5><br>
             <h5>Monday – Friday:<br>10:00am – 01:00am</h5>
         </div>
+
         <div>
             <h3>Instagram</h3>
         </div>
     </div>
+
+    <button id="scrollTop">↑</button>
+    
+    <script src="HomePage.js"> </script>
 </body>
 </html>

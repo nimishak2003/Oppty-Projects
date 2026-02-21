@@ -6,6 +6,7 @@
 
 body{
     font-family: Arial, Helvetica, sans-serif;
+    background: #000000;
 }
 
 /* nav-bar */
@@ -121,7 +122,7 @@ div a{
 
 /* section3 */
 
-.section3{
+/* .section3{
     background-color: #000000;
     color: #FFFFFF;
     display: flex;
@@ -130,18 +131,95 @@ div a{
 }
 
 .section3 h3{
-    font-size: 25px;
+    font-size: 30px;
     font-family: sans-serif;
     cursor:pointer;
 }
 
 .section3 h5{
     font-size: 18px;
+    line-height: 1.5;
+    font-weight: 100;
 }
 
 .section3 p{
     font-size: 18px;
+    font-weight: 100;
 }
+
+.tag a{
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.open{
+    margin-right: 200px;
+}
+
+.tag h3{
+    margin-left: 15px;
+}
+
 .tag{
-    display: grid;
+    
+    margin-right: 200px;;
+} */
+
+
+.section6{
+    background-color: #000000;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    padding: 150px 200px;
+}
+
+.section6 h3{
+    font-size: 30px;
+    font-family: sans-serif;
+    cursor:pointer;
+}
+
+.section6 h5{
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 100;
+}
+
+.section6 p{
+    font-size: 17px;
+    font-weight: 100;
+}
+
+.tag a{
+    font-size: 17px;
+    font-weight: 100;
+}
+
+.open{
+    margin-right: 200px;
+}
+
+.tag h3{
+    margin-left: 15px;
+}
+
+.tag{
+    
+    margin-right: 200px;;
+}
+
+#scrollTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 25px;
+  border-radius: 50%;
+  border: none;
+  font-size: 15px;
+  font-weight: 900;
+  background: white;
+  cursor: pointer;
+  display: none;
+
 }
