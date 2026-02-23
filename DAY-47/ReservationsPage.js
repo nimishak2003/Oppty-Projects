@@ -1,3 +1,4 @@
+
 function goToPage() {
     window.location.href = "ReservationsPage.html";
 }

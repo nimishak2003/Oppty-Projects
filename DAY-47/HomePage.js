@@ -1,6 +1,5 @@
 
 // HERO BACKGROUND SLIDER
-
 let heroSlides = document.querySelectorAll(".hero-slide");
 let heroIndex = 0;
 
