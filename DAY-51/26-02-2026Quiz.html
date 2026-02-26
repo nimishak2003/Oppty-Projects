@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="26-02-2026Quiz.css">
+</head>
+<body>
+    <div class="box">
+
+      <!-- LOGIN -->
+      <div id="loginPage">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Enter your name" /><br />
+        <button onclick="startQuiz()">Start Quiz</button>
+      </div>
+
+      <!-- QUIZ -->
+      <div id="quizPage" class="hidden">
+        <h2>Web Development Quiz</h2>
+        <div class="timer">Time: <span id="time">20</span>s</div>
+        <p id="question"></p>
+        <div id="options"></div>
+        <button onclick="nextQuestion()">Next</button>
+      </div>
+
+      <!-- RESULT -->
+      <div id="resultPage" class="hidden">
+        <h2>Result</h2>
+        <div class="result">
+          <p id="finalScore"></p>
+          <p id="accuracy"></p>
+        </div>
+        <button onclick="goToLogin()">Go To Login</button>
+      </div>
+      
+    </div>
+
+    <script src="26-02-2026Quiz.js"></script>
+</body>
+</html>
