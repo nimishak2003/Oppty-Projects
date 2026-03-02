@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Asynchronous Programming - Comprehensive Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+        :root {
+            --primary: #ffd200; /* Gold/Yellow */
+            --secondary: #000000; /* Black */
+            --accent: #f7971e; /* Orange */
+            --success: #4ade80;
+            --error: #f87171;
+            --bg-gradient: linear-gradient(135deg, #000000, #434343);
+            --btn-gradient: linear-gradient(45deg, #f7971e, #ffd200);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Poppins', sans-serif; 
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: white;
+            line-height: 1.7;
+            padding: 60px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .banner {
+            background: var(--btn-gradient);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: black;
+            box-shadow: 0 10px 30px rgba(247, 151, 30, 0.2);
+        }
+        .banner h1 { margin: 0; font-size: 2.4rem; font-weight: 700; }
+        .banner p { margin: 10px 0 0; opacity: 0.8; font-weight: 400; }
+
+        h2 { 
+            font-size: 1.8rem; 
+            margin: 40px 0 20px; 
+            color: var(--primary); 
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        h3 { color: var(--accent); margin: 25px 0 15px; font-size: 1.3rem; }
+        p { margin-bottom: 25px; color: #e0e0e0; font-weight: 300; }
+
+        pre {
+            background: #111827;
+            padding: 25px;
+            border-radius: 15px;
+            overflow: auto;
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        /* Playground Card */
+        .playground-card {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        #output-screen {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+            margin-bottom: 20px;
+            font-family: 'Fira Code', monospace;
+            min-height: 100px;
+            color: #1e293b;
+            font-weight: 500;
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+        }
+
+        /* Interactive Calculator Form */
+        .calc-form {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            border: 1px solid #e2e8f0;
+            align-items: center;
+        }
+
+        .calc-form input, .calc-form select {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            min-width: 100px;
+            font-size: 0.9rem;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            padding: 12px 25px;
+            background: var(--btn-gradient);
+            color: black;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .action-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(247, 151, 30, 0.4);
+        }
+
+        /* Try It Yourself Section Styles */
+        .try-it-editor {
+            background: #111827;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        .editor-header {
+            background: #1f2937;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .editor-label { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #9ca3af; }
+        
+        #custom-editor {
+            width: 100%;
+            height: 160px;
+            background: transparent;
+            color: var(--primary);
+            border: none;
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        #custom-preview {
+            background: white;
+            color: #111827;
+            padding: 30px;
+            min-height: 100px;
+            border-radius: 0 0 16px 16px;
+        }
+
+        /* Quiz System */
+        #quiz-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+            overflow: hidden;
+        }
+        #timer-bar {
+            height: 6px;
+            background: var(--primary);
+            width: 100%;
+            position: absolute;
+            top: 0; left: 0;
+            transition: width 1s linear;
+        }
+        .quiz-question { font-size: 1.3rem; margin-bottom: 25px; font-weight: 600; color: white; }
+        .quiz-options { display: flex; flex-direction: column; gap: 12px; }
+        .quiz-opt {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.2s;
+        }
+        .quiz-opt:hover { background: rgba(255, 255, 255, 0.12); border-color: var(--primary); }
+        .correct { background: var(--success) !important; color: #064e3b; font-weight: bold; }
+        .wrong { background: var(--error) !important; color: #7f1d1d; }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+        .nav-links a {
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 1px solid var(--primary);
+            transition: 0.3s;
+        }
+        .nav-links a:hover { background: var(--btn-gradient); color: black; border-color: transparent; }
+
+        footer { text-align: center; padding: 40px; font-size: 0.85rem; color: #9ca3af; opacity: 0.6; }
+
+        @media (max-width: 600px) {
+            body { padding: 20px; }
+            .container { padding: 30px; }
+            .calc-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="banner">
+    <h1>13. Asynchronous Programming</h1>
+    <p style="color: #000000;">Learn how JavaScript handles tasks over time</p>
+</header>
+
+    <section>
+    <h2>What is Asynchronous Programming?</h2>
+    <p>Asynchronous programming allows JavaScript to perform long-running tasks 
+    (like API calls, timers, file loading) without blocking the main thread.</p>
+
+    <div class="info-card">
+        <p>JavaScript is single-threaded, but it uses the <strong>Event Loop</strong> 
+        to handle asynchronous tasks efficiently.</p>
+    </div>
+</section>
+    <section>
+        <h2>Assignment Operators</h2>
+        <p>Used to assign values to variables:</p>
+        <pre>let x = 10;
+x += 5; // Same as x = x + 5 (15)
+x -= 2; // Same as x = x - 2 (13)
+x *= 3; // Same as x = x * 3 (39)
+x /= 3; // Same as x = x / 3 (13)
+x %= 4; // Same as x = x % 4 (1)</pre>
+    </section>
+
+    <section>
+    <h2>setTimeout()</h2>
+    <p>The <strong>setTimeout()</strong> function runs code after a specified delay.</p>
+
+<pre>
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Executed after 2 seconds");
+}, 2000);
+
+console.log("End");
+</pre>
+</section>
+
+<section>
+    <h2>Promises</h2>
+    <p>A Promise represents a value that may be available now, later, or never.</p>
+
+<pre>
+const myPromise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) {
+    resolve("Operation Successful!");
+  } else {
+    reject("Operation Failed!");
+  }
+});
+
+myPromise
+  .then(result => console.log(result))
+  .catch(error => console.log(error));
+</pre>
+</section>
+
+<section>
+    <h2>Async & Await</h2>
+    <p><strong>async</strong> makes a function return a Promise. 
+    <strong>await</strong> pauses execution until the Promise resolves.</p>
+
+<pre>
+function delay() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve("Done!"), 2000);
+  });
+}
+
+async function run() {
+  let result = await delay();
+  console.log(result);
+}
+
+run();
+</pre>
+</section>
+
+    
+    <!-- Playground Section -->
+    <section>
+    <h2>Async Playground</h2>
+    <p>Test asynchronous concepts interactively:</p>
+    <div class="playground-card">
+        <h3 style="margin-top:0; color: #1e293b;">Interactive Async Testing</h3>
+        <div id="output-screen">Output:<br>Ready to explore async programming...</div>
+
+        <div class="btn-grid">
+            <button class="action-btn" onclick="runTimeout()">setTimeout()</button>
+            <button class="action-btn" onclick="runPromise()">Promise</button>
+            <button class="action-btn" onclick="runAsyncAwait()">Async/Await</button>
+            <button class="action-btn" onclick="clearOutput()" style="background:#444; color: white;">Clear Output</button>
+        </div>
+    </div>
+</section>
+
+    <!-- Try It Yourself Section -->
+    <section>
+        <h2>Try It Yourself</h2>
+        <p>Write your own custom JavaScript code below to test any combination of operators. Click "Run Code" to see the output.</p>
+        
+        <div class="try-it-editor">
+            <div class="editor-header">
+                <span class="editor-label">LIVE_EDITOR.JS</span>
+                <button class="action-btn" id="custom-run-btn" style="padding: 6px 15px; font-size: 0.8rem;">Run Code</button>
+            </div>
+
+            <textarea id="custom-editor" spellcheck="false">// Experiment with async programming!
+
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function testAsync() {
+  document.getElementById("custom-preview").innerHTML = `<p style="color: #000000;">Waiting 2 seconds...</p>`;
+  
+  await wait(2000);
+  
+  document.getElementById("custom-preview").innerHTML += `<p style="color: #000000;">Finished Waiting!</p>`;
+}
+
+testAsync();
+</textarea>
+
+            <div id="custom-preview">
+                <span style="color: #9ca3af">Output will appear here after clicking "Run Code"...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIZ SECTION -->
+    <section id="quiz-area">
+        <h2>Operator Knowledge Check</h2>
+        <div id="quiz-container">
+            <div id="timer-bar"></div>
+            <div id="quiz-content" style="text-align: center;">
+                <button class="action-btn" onclick="startQuiz()" style="padding: 15px 45px; margin-top: 20px;">Start Operators Quiz</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="nav-links">
+        <a href="js12.html">← Prev: Error Handling</a>
+        <a href="js14.html">Next: ES6+ Features →</a>
+    </div>
+
+    <footer>
+        ©️ 2026 JavaScript Tutorial Series. All rights reserved.
+    </footer>
+</div>
+
+<script>
+    const screen = document.getElementById('output-screen');
+
+    function runTimeout() {
+    screen.innerHTML = "Output:<br>Waiting 2 seconds...";
+
+    setTimeout(() => {
+        screen.innerHTML += "<br>Executed after 2 seconds!";
+    }, 2000);
+}
+
+function runPromise() {
+    screen.innerHTML = "Output:<br>Creating Promise...";
+
+    const promise = new Promise((resolve) => {
+        setTimeout(() => resolve("Promise Resolved!"), 2000);
+    });
+
+    promise.then(result => {
+        screen.innerHTML += `<br>${result}`;
+    });
+}
+
+function runAsyncAwait() {
+    screen.innerHTML = "Output:<br>Running Async Function...";
+
+    function delay() {
+        return new Promise(resolve => {
+            setTimeout(() => resolve("Async/Await Finished!"), 2000);
+        });
+    }
+
+    async function execute() {
+        const result = await delay();
+        screen.innerHTML += `<br>${result}`;
+    }
+
+    execute();
+}
+
+function clearOutput() {
+    screen.innerHTML = "Output:<br>Ready to explore async programming...";
+}
+
+
+    // --- Custom Editor Logic ---
+    const customRunBtn = document.getElementById('custom-run-btn');
+    const customEditor = document.getElementById('custom-editor');
+    const customPreview = document.getElementById('custom-preview');
+
+    customRunBtn.addEventListener('click', () => {
+        try {
+            customPreview.innerHTML = "";
+            const userScript = new Function('document', customEditor.value);
+            userScript(document);
+        } catch (err) {
+            customPreview.innerHTML = `<div style="color: #ef4444; font-family: monospace;">Error: ${err.message}</div>`;
+        }
+    });
+
+    // Quiz Data
+    const quizData = [
+    { q: "Which function delays execution?", a: ["setTimeout()", "delay()", "wait()", "pause()"], correct: 0 },
+    { q: "A Promise can be:", a: ["Resolved", "Rejected", "Pending", "All of the above"], correct: 3 },
+    { q: "Which keyword pauses async execution?", a: ["await", "pause", "wait", "async"], correct: 0 },
+    { q: "What does async function return?", a: ["Number", "Boolean", "Promise", "String"], correct: 2 },
+    { q: "JavaScript is:", a: ["Multi-threaded", "Single-threaded", "Dual-threaded", "None"], correct: 1 }
+];
+
+    let currentQ = 0;
+    let scoreCount = 0;
+    let timer;
+    let timeLeft = 15;
+
+    function startQuiz() {
+        currentQ = 0;
+        scoreCount = 0;
+        showQuestion();
+    }
+
+    function showQuestion() {
+        clearInterval(timer);
+        if (currentQ >= quizData.length) {
+            showResults();
+            return;
+        }
+        timeLeft = 15;
+        updateTimerBar();
+        const data = quizData[currentQ];
+        let optionsHtml = data.a.map((opt, i) => `<div class="quiz-opt" onclick="checkAnswer(${i})">${opt}</div>`).join('');
+        document.getElementById('quiz-content').innerHTML = `
+            <div class="quiz-question">Question ${currentQ + 1}: ${data.q}</div>
+            <div class="quiz-options" style="text-align: left;">${optionsHtml}</div>
+        `;
+        timer = setInterval(() => {
+            timeLeft--;
+            updateTimerBar();
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                currentQ++;
+                showQuestion();
+            }
+        }, 1000);
+    }
+
+    function updateTimerBar() {
+        const bar = document.getElementById('timer-bar');
+        if(bar) bar.style.width = (timeLeft / 15) * 100 + "%";
+    }
+
+    function checkAnswer(index) {
+        clearInterval(timer);
+        const correct = quizData[currentQ].correct;
+        const opts = document.querySelectorAll('.quiz-opt');
+        if (index === correct) {
+            opts[index].classList.add('correct');
+            scoreCount++;
+        } else if (index !== -1) {
+            opts[index].classList.add('wrong');
+            opts[correct].classList.add('correct');
+        }
+        setTimeout(() => {
+            currentQ++;
+            showQuestion();
+        }, 1500);
+    }
+
+    function showResults() {
+        document.getElementById('timer-bar').style.width = "0%";
+        document.getElementById('quiz-content').innerHTML = `
+            <div style="padding: 20px;">
+                <h2 style="border:none; text-align:center; margin:0; color: white;">Quiz Complete!</h2>
+                <p style="text-align:center; font-size: 1.5rem; color: var(--primary); font-weight: bold; margin: 15px 0;">Score: ${scoreCount} / ${quizData.length}</p>
+                <button class="action-btn" onclick="startQuiz()" style="display: block; margin: 20px auto; padding: 12px 40px;">Try Again</button>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>

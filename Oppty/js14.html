@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript ES6+ Features - Comprehensive Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+        :root {
+            --primary: #ffd200; /* Gold/Yellow */
+            --secondary: #000000; /* Black */
+            --accent: #f7971e; /* Orange */
+            --success: #4ade80;
+            --error: #f87171;
+            --bg-gradient: linear-gradient(135deg, #000000, #434343);
+            --btn-gradient: linear-gradient(45deg, #f7971e, #ffd200);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Poppins', sans-serif; 
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: white;
+            line-height: 1.7;
+            padding: 60px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .banner {
+            background: var(--btn-gradient);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: black;
+            box-shadow: 0 10px 30px rgba(247, 151, 30, 0.2);
+        }
+        .banner h1 { margin: 0; font-size: 2.4rem; font-weight: 700; }
+        .banner p { margin: 10px 0 0; opacity: 0.8; font-weight: 400; }
+
+        h2 { 
+            font-size: 1.8rem; 
+            margin: 40px 0 20px; 
+            color: var(--primary); 
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        h3 { color: var(--accent); margin: 25px 0 15px; font-size: 1.3rem; }
+        p { margin-bottom: 25px; color: #e0e0e0; font-weight: 300; }
+
+        pre {
+            background: #111827;
+            padding: 25px;
+            border-radius: 15px;
+            overflow: auto;
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        /* Playground Card */
+        .playground-card {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        #output-screen {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+            margin-bottom: 20px;
+            font-family: 'Fira Code', monospace;
+            min-height: 100px;
+            color: #1e293b;
+            font-weight: 500;
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+        }
+
+        /* Interactive Calculator Form */
+        .calc-form {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            border: 1px solid #e2e8f0;
+            align-items: center;
+        }
+
+        .calc-form input, .calc-form select {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            min-width: 100px;
+            font-size: 0.9rem;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            padding: 12px 25px;
+            background: var(--btn-gradient);
+            color: black;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .action-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(247, 151, 30, 0.4);
+        }
+
+        /* Try It Yourself Section Styles */
+        .try-it-editor {
+            background: #111827;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        .editor-header {
+            background: #1f2937;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .editor-label { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #9ca3af; }
+        
+        #custom-editor {
+            width: 100%;
+            height: 160px;
+            background: transparent;
+            color: var(--primary);
+            border: none;
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        #custom-preview {
+            background: white;
+            color: #111827;
+            padding: 30px;
+            min-height: 100px;
+            border-radius: 0 0 16px 16px;
+        }
+
+        /* Quiz System */
+        #quiz-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+            overflow: hidden;
+        }
+        #timer-bar {
+            height: 6px;
+            background: var(--primary);
+            width: 100%;
+            position: absolute;
+            top: 0; left: 0;
+            transition: width 1s linear;
+        }
+        .quiz-question { font-size: 1.3rem; margin-bottom: 25px; font-weight: 600; color: white; }
+        .quiz-options { display: flex; flex-direction: column; gap: 12px; }
+        .quiz-opt {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.2s;
+        }
+        .quiz-opt:hover { background: rgba(255, 255, 255, 0.12); border-color: var(--primary); }
+        .correct { background: var(--success) !important; color: #064e3b; font-weight: bold; }
+        .wrong { background: var(--error) !important; color: #7f1d1d; }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+        .nav-links a {
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 1px solid var(--primary);
+            transition: 0.3s;
+        }
+        .nav-links a:hover { background: var(--btn-gradient); color: black; border-color: transparent; }
+
+        footer { text-align: center; padding: 40px; font-size: 0.85rem; color: #9ca3af; opacity: 0.6; }
+
+        @media (max-width: 600px) {
+            body { padding: 20px; }
+            .container { padding: 30px; }
+            .calc-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="banner">
+  <h1>14. ES6+ Features</h1>
+  <p style="color: #000000;">Learn modern JavaScript: let/const, arrow functions, template literals, destructuring, spread & more</p>
+</header>
+
+<section>
+  <h2>What is ES6+?</h2>
+  <p>ES6 (ECMAScript 2015) introduced modern JavaScript features that make code cleaner, shorter, and easier to read. ES6+ means ES6 and later versions (ES7, ES8...)</p>
+
+  <div class="info-card">
+    <p>Most modern JavaScript (React, Node.js, frameworks) uses ES6+ features every day.</p>
+  </div>
+</section>
+
+<section>
+  <h2>let vs const</h2>
+  <p><strong>let</strong> allows reassignment. <strong>const</strong> does not allow reassignment (but objects/arrays can still be updated inside).</p>
+  <pre>let count = 1;
+count = 2; // ✅ allowed
+
+const pi = 3.14;
+// pi = 3.1415 ❌ error (reassignment not allowed)
+
+const user = { name: "Alex" };
+user.name = "John"; // ✅ allowed (object property update)</pre>
+</section>
+
+<section>
+  <h2>Arrow Functions</h2>
+  <p>Arrow functions are a shorter way to write functions. They are commonly used in callbacks.</p>
+  <pre>// Normal function
+function add(a, b) {
+  return a + b;
+}
+
+// Arrow function
+const add2 = (a, b) => a + b;
+
+console.log(add2(5, 3)); // 8</pre>
+</section>
+
+<section>
+  <h2>Template Literals</h2>
+  <p>Template literals use backticks (<code>`</code>) and allow variable embedding using <code>${ }</code>.</p>
+  <pre>let name = "Nimisha";
+let course = "JavaScript";
+
+let msg = `Hi ${name}, welcome to ${course}!`;
+console.log(msg);</pre>
+</section>
+
+<section>
+  <h2>Destructuring</h2>
+  <p>Destructuring helps extract values from arrays/objects easily.</p>
+  <pre>// Array destructuring
+const nums = [10, 20, 30];
+const [a, b] = nums;
+console.log(a, b); // 10 20
+
+// Object destructuring
+const person = { firstName: "John", age: 22 };
+const { firstName, age } = person;
+console.log(firstName, age);</pre>
+</section>
+
+<section>
+  <h2>Spread & Rest Operators</h2>
+
+  <div class="info-card">
+    <h3>Spread (...)</h3>
+    <p>Spread expands arrays/objects into individual items.</p>
+    <pre>const arr1 = [1, 2];
+const arr2 = [...arr1, 3, 4];
+console.log(arr2); // [1,2,3,4]</pre>
+  </div>
+
+  <div class="info-card">
+    <h3>Rest (...)</h3>
+    <p>Rest collects multiple values into an array.</p>
+    <pre>function sum(...nums) {
+  return nums.reduce((t, n) => t + n, 0);
+}
+
+console.log(sum(1, 2, 3, 4)); // 10</pre>
+  </div>
+</section>
+
+<section>
+  <h2>Default Parameters</h2>
+  <p>Default parameters allow you to provide a fallback value if an argument is missing.</p>
+  <pre>function greet(name = "Guest") {
+  return `Hello ${name}`;
+}
+
+console.log(greet());        // Hello Guest
+console.log(greet("Alex"));  // Hello Alex</pre>
+</section>
+
+    <!-- Playground Section -->
+     
+    <section>
+        <h2>ES6+ Playground</h2>
+        <p>Practice ES6+ features and see the output instantly using our built-in tool:</p>
+        <div class="playground-card">
+            <h3 style="margin-top:0; color: #1e293b;">Interactive ES6+ Features Testing</h3>
+            <div id="output-screen">Output:<br>Ready to explore ES6+ Features...</div>
+            
+            <div class="btn-grid">
+                <button class="action-btn" onclick="showLetConst()">let / const</button>
+                <button class="action-btn" onclick="showArrow()">Arrow Fn</button>
+                <button class="action-btn" onclick="showDestructure()">Destructuring</button>
+                <button class="action-btn" onclick="clearOutput()" style="background:#444; color: white;">Clear Output</button>
+            </div>
+
+            <div class="calc-form">
+                <input type="text" id="num1" placeholder="Your Name">
+                <select id="opSelect">
+                    <option value="greet">Greet</option>
+                    <option value="course">Course</option>
+                    <option value="status">Status</option>
+                </select>
+                <input type="text" id="num2" placeholder="Value (ex: JavaScript)">
+                <button class="action-btn" style="flex: 1;" onclick="calculate()">Build Message</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Try It Yourself Section -->
+    <section>
+        <h2>Try It Yourself</h2>
+        <p>Write your own custom JavaScript code below to test any combination of operators. Click "Run Code" to see the output.</p>
+        
+        <div class="try-it-editor">
+            <div class="editor-header">
+                <span class="editor-label">LIVE_EDITOR.JS</span>
+                <button class="action-btn" id="custom-run-btn" style="padding: 6px 15px; font-size: 0.8rem;">Run Code</button>
+            </div>
+            
+            <textarea id="custom-editor" spellcheck="false">// Try ES6+ here!
+
+const student = {
+  name: "Nimisha",
+  skills: ["HTML", "CSS", "JS"],
+  score: 85
+};
+
+// Destructuring
+const { name, score } = student;
+
+// Spread
+const updatedSkills = [...student.skills, "React"];
+
+// Template literal
+const msg = `Hi ${name}! Your score is ${score}. Skills: ${updatedSkills.join(", ")}`;
+
+// Show output
+document.getElementById("custom-preview").innerHTML = `
+  <h3 style="color:#000000">ES6+ Output:</h3>
+  <p style="color: #000000;"><strong>${msg}</strong></p>
+`;
+</textarea>
+
+            <div id="custom-preview">
+                <span style="color: #9ca3af">Output will appear here after clicking "Run Code"...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIZ SECTION -->
+    <section id="quiz-area">
+        <h2>Operator Knowledge Check</h2>
+        <div id="quiz-container">
+            <div id="timer-bar"></div>
+            <div id="quiz-content" style="text-align: center;">
+                <button class="action-btn" onclick="startQuiz()" style="padding: 15px 45px; margin-top: 20px;">Start Operators Quiz</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="nav-links">
+        <a href="js13.html">← Prev: Asynchronous Programming</a>
+        <a href="js15.html">Next: Modules →</a>
+    </div>
+
+    <footer>
+        ©️ 2026 JavaScript Tutorial Series. All rights reserved.
+    </footer>
+</div>
+
+<script>
+    const screen = document.getElementById('output-screen');
+
+function showLetConst() {
+  let x = 10;
+  x = 20;
+
+  const y = 5; // cannot reassign
+
+  screen.innerHTML =
+    `Output:<br>` +
+    `let x = 10; x = 20; ✅<br>` +
+    `const y = 5; (reassign not allowed) ❌<br>` +
+    `Current x: <strong>${x}</strong>, y: <strong>${y}</strong>`;
+}
+
+function showArrow() {
+  const add = (a, b) => a + b;
+  const result = add(7, 3);
+
+  screen.innerHTML =
+    `Output:<br>` +
+    `Arrow Function Example:<br>` +
+    `const add = (a, b) => a + b;<br>` +
+    `add(7, 3) = <strong>${result}</strong>`;
+}
+
+function showDestructure() {
+  const user = { name: "Alex", age: 22, city: "Hyderabad" };
+  const { name, age } = user;
+
+  const nums = [10, 20, 30];
+  const [a, b] = nums;
+
+  screen.innerHTML =
+    `Output:<br>` +
+    `Object destructuring: name=${name}, age=${age}<br>` +
+    `Array destructuring: a=${a}, b=${b}`;
+}
+
+function calculate() {
+  const name = document.getElementById('num1').value.trim();
+  const mode = document.getElementById('opSelect').value;
+  const value = document.getElementById('num2').value.trim();
+
+  if (!name || !value) {
+    screen.innerHTML = "Output:<br><span style='color:red'>Please enter both fields.</span>";
+    return;
+  }
+
+  let msg = "";
+  if (mode === "greet") msg = `Hi ${name}! 👋`;
+  if (mode === "course") msg = `${name} is learning ${value} 🚀`;
+  if (mode === "status") msg = `${name}'s status: ${value} ✅`;
+
+  screen.innerHTML = `Output:<br><strong>${msg}</strong>`;
+}
+
+function clearOutput() {
+  screen.innerHTML = "Output:<br>Ready to explore ES6+ features...";
+}
+    // --- Custom Editor Logic ---
+    const customRunBtn = document.getElementById('custom-run-btn');
+    const customEditor = document.getElementById('custom-editor');
+    const customPreview = document.getElementById('custom-preview');
+
+    customRunBtn.addEventListener('click', () => {
+        try {
+            customPreview.innerHTML = "";
+            const userScript = new Function('document', customEditor.value);
+            userScript(document);
+        } catch (err) {
+            customPreview.innerHTML = `<div style="color: #ef4444; font-family: monospace;">Error: ${err.message}</div>`;
+        }
+    });
+
+    // Quiz Data
+    const quizData = [
+  { q: "Which keyword is used for a constant variable?", a: ["let", "var", "const", "static"], correct: 2 },
+  { q: "Arrow function symbol is:", a: ["=>", "->", "::", "**"], correct: 0 },
+  { q: "Template literals use:", a: ["' '", "\" \"", "` `", "( )"], correct: 2 },
+  { q: "Which operator spreads an array?", a: ["??", "...", "&&", "::"], correct: 1 },
+  { q: "Destructuring is used to:", a: ["Loop arrays", "Extract values from arrays/objects", "Create functions", "Sort data"], correct: 1 }
+];
+
+    let currentQ = 0;
+    let scoreCount = 0;
+    let timer;
+    let timeLeft = 15;
+
+    function startQuiz() {
+        currentQ = 0;
+        scoreCount = 0;
+        showQuestion();
+    }
+
+    function showQuestion() {
+        clearInterval(timer);
+        if (currentQ >= quizData.length) {
+            showResults();
+            return;
+        }
+        timeLeft = 15;
+        updateTimerBar();
+        const data = quizData[currentQ];
+        let optionsHtml = data.a.map((opt, i) => `<div class="quiz-opt" onclick="checkAnswer(${i})">${opt}</div>`).join('');
+        document.getElementById('quiz-content').innerHTML = `
+            <div class="quiz-question">Question ${currentQ + 1}: ${data.q}</div>
+            <div class="quiz-options" style="text-align: left;">${optionsHtml}</div>
+        `;
+        timer = setInterval(() => {
+            timeLeft--;
+            updateTimerBar();
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                currentQ++;
+                showQuestion();
+            }
+        }, 1000);
+    }
+
+    function updateTimerBar() {
+        const bar = document.getElementById('timer-bar');
+        if(bar) bar.style.width = (timeLeft / 15) * 100 + "%";
+    }
+
+    function checkAnswer(index) {
+        clearInterval(timer);
+        const correct = quizData[currentQ].correct;
+        const opts = document.querySelectorAll('.quiz-opt');
+        if (index === correct) {
+            opts[index].classList.add('correct');
+            scoreCount++;
+        } else if (index !== -1) {
+            opts[index].classList.add('wrong');
+            opts[correct].classList.add('correct');
+        }
+        setTimeout(() => {
+            currentQ++;
+            showQuestion();
+        }, 1500);
+    }
+
+    function showResults() {
+        document.getElementById('timer-bar').style.width = "0%";
+        document.getElementById('quiz-content').innerHTML = `
+            <div style="padding: 20px;">
+                <h2 style="border:none; text-align:center; margin:0; color: white;">Quiz Complete!</h2>
+                <p style="text-align:center; font-size: 1.5rem; color: var(--primary); font-weight: bold; margin: 15px 0;">Score: ${scoreCount} / ${quizData.length}</p>
+                <button class="action-btn" onclick="startQuiz()" style="display: block; margin: 20px auto; padding: 12px 40px;">Try Again</button>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Operators</title>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Poppins",sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#000000,#434343);
+color:white;
+padding:60px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+padding:50px;
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+.header{
+background:linear-gradient(to right,#ff9800,#ff5722);
+color:white;
+text-align:center;
+padding:20px;
+border-radius:8px;
+margin-bottom:20px;
+}
+
+h1{
+margin-bottom:15px;
+color:#ed996c;
+}
+
+p{
+margin-bottom:20px;
+line-height:1.7;
+font-weight:200;
+}
+
+pre{
+background:#111827;
+padding:20px;
+border-radius:12px;
+overflow:auto;
+color:#ffd200;
+margin-bottom:20px;
+}
+
+button{
+background:linear-gradient(45deg,#f7971e,#ffd200);
+color:black;
+border:none;
+padding:10px 20px;
+border-radius:25px;
+cursor:pointer;
+margin:5px 5px 15px 0;
+font-weight:600;
+}
+
+button:hover{
+opacity:0.8;
+}
+
+.output{
+background:#dff0d8;
+color:black;
+padding:15px;
+border-radius:10px;
+margin-bottom:20px;
+}
+
+input{
+padding:8px;
+margin:5px;
+border-radius:5px;
+border:none;
+}
+
+a{
+display:inline-block;
+margin-top:30px;
+padding:12px 25px;
+background:linear-gradient(45deg,#f7971e,#ffd200);
+color:black;
+text-decoration:none;
+border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<h1>Operators</h1>
+<p>Learn about operators in JavaScript</p>
+</div>
+
+<h1>What are Operators?</h1>
+<p>JavaScript operators are symbols used to perform operations on variables and values.</p>
+
+<h1>1. Arithmetic Operators</h1>
+<pre>
+let x = 10;
+let y = 3;
+console.log(x + y);
+</pre>
+
+<h1>2. Assignment Operators</h1>
+<pre>
+let x = 10;
+x += 5;
+</pre>
+
+<h1>3. Comparison Operators</h1>
+<pre>
+console.log(5 > 3);
+</pre>
+
+<h1>4. Logical Operators</h1>
+<pre>
+let age = 25;
+if(age > 18 && age < 30){
+   console.log("Young Adult");
+}
+</pre>
+
+<hr style="margin:40px 0; border:1px solid #444;">
+
+<h1>🔥 Try It Yourself</h1>
+
+<div class="output" id="output">
+Output will appear here...
+</div>
+
+<button onclick="testArithmetic()">Test Arithmetic</button>
+<button onclick="testAssignment()">Test Assignment</button>
+<button onclick="testComparison()">Test Comparison</button>
+<button onclick="testLogical()">Test Logical</button>
+<button onclick="clearOutput()">Clear</button>
+
+<h3 style="margin-top:30px;">Custom Calculator</h3>
+
+<input type="number" id="num1" placeholder="Number 1">
+<input type="number" id="num2" placeholder="Number 2">
+<button onclick="calculate()">Calculate (+)</button>
+
+<a href="js.html">← Back to JavaScript Lessons</a>
+
+</div>
+
+<script>
+
+function testArithmetic(){
+let x = 10;
+let y = 3;
+
+let result = `
+10 + 3 = ${x+y}
+10 - 3 = ${x-y}
+10 * 3 = ${x*y}
+10 / 3 = ${(x/y).toFixed(2)}
+10 % 3 = ${x%y}
+`;
+
+document.getElementById("output").innerText = result;
+}
+
+function testAssignment(){
+let x = 10;
+x += 5;
+x -= 2;
+
+document.getElementById("output").innerText =
+"After assignment operations value of x = " + x;
+}
+
+function testComparison(){
+let result = `
+5 > 3  → ${5>3}
+5 < 3  → ${5<3}
+5 == "5" → ${5=="5"}
+5 === "5" → ${5==="5"}
+`;
+
+document.getElementById("output").innerText = result;
+}
+
+function testLogical(){
+let age = 25;
+let message = "";
+
+if(age > 18 && age < 30){
+message = "Young Adult (AND condition true)";
+}
+
+document.getElementById("output").innerText = message;
+}
+
+function clearOutput(){
+document.getElementById("output").innerText =
+"Output cleared...";
+}
+
+function calculate(){
+let n1 = parseFloat(document.getElementById("num1").value);
+let n2 = parseFloat(document.getElementById("num2").value);
+
+if(isNaN(n1) || isNaN(n2)){
+alert("Enter both numbers");
+return;
+}
+
+document.getElementById("output").innerText =
+"Addition Result = " + (n1+n2);
+}
+
+</script>
+
+</body>
+</html>
