@@ -5,246 +5,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Functions - Comprehensive Guide</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-        :root {
-            --primary: #ffd200; /* Gold/Yellow */
-            --secondary: #000000; /* Black */
-            --accent: #f7971e; /* Orange */
-            --success: #4ade80;
-            --error: #f87171;
-            --bg-gradient: linear-gradient(135deg, #000000, #434343);
-            --btn-gradient: linear-gradient(45deg, #f7971e, #ffd200);
-        }
-
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Poppins', sans-serif; 
-        }
+        /* Global Reset & Light Theme - Consistent with previous modules */
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
         body {
-            background: var(--bg-gradient);
-            color: white;
-            line-height: 1.7;
-            padding: 60px;
+            background-color: #f1f5f9;
+            color: #334155;
+            padding: 40px 20px;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: auto;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
+            background: #ffffff;
             padding: 50px;
             border-radius: 25px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
         }
 
-        /* Banner Style */
+        /* Banner Styling - Indigo Gradient */
         .banner {
-            background: var(--btn-gradient);
-            padding: 40px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            padding: 35px;
             border-radius: 20px;
             margin-bottom: 40px;
             text-align: center;
-            color: black;
-            box-shadow: 0 10px 30px rgba(247, 151, 30, 0.2);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
         }
-        .banner h1 { margin: 0; font-size: 2.4rem; font-weight: 700; }
-        .banner p { margin: 10px 0 0; opacity: 0.8; font-weight: 400; color: black; }
+        .banner h1 { margin: 0; font-size: 2.2rem; color: #ffffff; }
+        .banner p { margin: 10px 0 0; opacity: 0.95; font-weight: 400; color: #ffffff; }
 
-        h2 { 
-            font-size: 1.8rem; 
-            margin: 40px 0 20px; 
-            color: var(--primary); 
-            border-left: 4px solid var(--accent);
-            padding-left: 15px;
-        }
+        /* Headings */
+        h2 { margin: 40px 0 20px; color: #1e293b; border-left: 4px solid #6366f1; padding-left: 15px; }
+        h3 { color: #4f46e5; margin: 25px 0 15px; font-size: 1.3rem; }
+        p { margin-bottom: 25px; line-height: 1.8; font-weight: 400; }
 
-        h3 { color: var(--accent); margin: 20px 0 10px; font-size: 1.3rem; }
-        p { margin-bottom: 25px; color: #e0e0e0; font-weight: 300; }
+        /* List Styling */
+        ul { margin-bottom: 25px; list-style: none; }
+        ul li { margin-bottom: 12px; padding-left: 25px; position: relative; color: #475569; }
+        ul li::before { content: "›"; position: absolute; left: 0; color: #6366f1; font-weight: bold; font-size: 1.2rem; }
+        ul li strong { color: #1e293b; }
 
-        /* Code Blocks */
+        /* Code Block Styling */
         pre {
-            background: #111827;
+            background: #1e293b;
             padding: 25px;
             border-radius: 15px;
             overflow: auto;
-            color: var(--primary);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #0f172a;
             margin-bottom: 30px;
         }
 
         /* Info Highlight Cards */
         .info-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 16px;
-            margin-bottom: 25px;
-            border: 1px dashed rgba(255, 255, 255, 0.2);
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
         }
-
-        ul { margin-bottom: 25px; list-style: none; }
-        ul li { margin-bottom: 12px; padding-left: 25px; position: relative; color: #ccc; }
-        ul li::before { content: "›"; position: absolute; left: 0; color: var(--primary); font-weight: bold; font-size: 1.2rem; }
-        ul li strong { color: var(--primary); font-family: 'Fira Code', monospace; }
 
         /* Playground Card */
         .playground-card {
-            background: white;
+            background: #f8fafc;
             color: #333;
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 15px;
             margin-top: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            border: 1px solid #e2e8f0;
         }
 
         #output-screen {
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 5px solid var(--accent);
+            background: #1e293b;
+            color: #4ade80;
+            padding: 15px;
+            border-radius: 8px;
             margin-bottom: 20px;
-            font-family: 'Fira Code', monospace;
-            min-height: 100px;
-            color: #1e293b;
-            font-weight: 500;
+            font-family: monospace;
+            min-height: 80px;
+            text-align: left;
             white-space: pre-wrap;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .btn-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
             margin-top: 20px;
         }
 
         .action-btn {
-            padding: 14px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            color: white;
             border: none;
-            background: var(--btn-gradient);
-            color: black;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: 0.3s;
             text-align: center;
         }
-        .action-btn:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 5px 15px rgba(247, 151, 30, 0.4);
-        }
+        .action-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3); }
 
-        /* Try It Yourself Section Styles */
-        .try-it-editor {
-            background: #111827;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin: 30px 0;
-            overflow: hidden;
-        }
-        .editor-header {
-            background: #1f2937;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .editor-label { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #9ca3af; }
-        
-        #custom-editor {
-            width: 100%;
-            height: 200px;
-            background: transparent;
-            color: var(--primary);
-            border: none;
-            padding: 20px;
-            font-family: 'Fira Code', monospace;
-            font-size: 14px;
-            resize: vertical;
-            outline: none;
-            border-bottom: 1px solid #1f2937;
-        }
-
-        #custom-preview {
-            background: white;
-            color: #111827;
-            padding: 30px;
-            min-height: 100px;
-            border-radius: 0 0 16px 16px;
-        }
-
-        /* Quiz System */
+        /* Quiz Container */
         #quiz-container {
-            background: rgba(0, 0, 0, 0.3);
+            background: #ffffff;
+            padding: 35px;
             border-radius: 20px;
-            padding: 40px;
+            margin-top: 60px;
+            border: 1px solid #e2e8f0;
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 50px;
             overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         #timer-bar {
             height: 6px;
-            background: var(--primary);
+            background: #6366f1;
             width: 100%;
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             transition: width 1s linear;
         }
-        .quiz-question { font-size: 1.25rem; margin-bottom: 25px; font-weight: 600; }
-        .quiz-options { display: flex; flex-direction: column; gap: 12px; }
+        .quiz-question { font-size: 1.2rem; margin-bottom: 25px; font-weight: 600; color: #1e293b; }
+        .quiz-options { display: flex; flex-direction: column; gap: 10px; }
         .quiz-opt {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px 20px;
+            background: #f8fafc;
+            padding: 15px;
             border-radius: 12px;
             cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.2s;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+            color: #334155;
+            font-size: 0.95rem;
+            text-align: left;
         }
-        .quiz-opt:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--primary); }
-        .correct { background: var(--success) !important; color: #064e3b; font-weight: bold; }
-        .wrong { background: var(--error) !important; color: #7f1d1d; }
+        .quiz-opt:hover { background: #f1f5f9; border-color: #6366f1; }
+        .correct { background: #dcfce7 !important; color: #166534 !important; border-color: #22c55e !important; font-weight: 600; }
+        .wrong { background: #fee2e2 !important; color: #991b1b !important; border-color: #ef4444 !important; }
 
+        /* Navigation Links */
         .nav-links {
             display: flex;
             justify-content: space-between;
             margin-top: 60px;
         }
         .nav-links a {
-            padding: 12px 30px;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--primary);
+            padding: 10px 24px;
+            background: #6366f1;
+            color: white;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 25px;
             font-weight: 600;
-            border: 1px solid var(--primary);
+            font-size: 0.9rem;
             transition: 0.3s;
         }
-        .nav-links a:hover { background: var(--btn-gradient); color: black; border-color: transparent; }
+        .nav-links a.back { background: #ffffff; border: 1px solid #e2e8f0; color: #64748b; }
+        .nav-links a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2); }
 
-        footer { text-align: center; margin-top: 50px; font-size: 0.85rem; color: #9ca3af; opacity: 0.6; }
-
-        code {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Fira Code', monospace;
-            color: var(--primary);
-        }
-
-        @media (max-width: 600px) {
-            body { padding: 20px; }
-            .banner h1 { font-size: 1.8rem; }
-            .container { padding: 30px; }
-        }
+        footer { text-align: center; margin-top: 40px; font-size: 0.8rem; color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -252,202 +180,155 @@
 <div class="container">
     <header class="banner">
         <h1>5. JavaScript Functions</h1>
-        <p>Master reusable blocks of code and modern function logic</p>
+        <p>Learn how to write reusable blocks of code</p>
     </header>
 
     <section>
         <h2>What is a Function?</h2>
-        <p>A JavaScript function is a block of code designed to perform a particular task. A function is executed when "something" invokes it (calls it).</p>
-        <div class="info-card">
-            <h3>Why Functions?</h3>
-            <p>You can reuse code: Define the code once, and use it many times. You can use the same code many times with different arguments, to produce different results.</p>
-        </div>
+        <p>A JavaScript function is a block of code designed to perform a particular task. It is executed when "something" invokes it (calls it). Functions allow you to write code once and use it many times.</p>
     </section>
 
     <section>
         <h2>Function Syntax</h2>
-        <p>A JavaScript function is defined with the <code>function</code> keyword, followed by a <strong>name</strong>, followed by parentheses <strong>()</strong>.</p>
-        <pre>// Function Declaration
-function name(parameter1, parameter2) {
-  // code to be executed
-}
-
-// Calling the function
-name(argument1, argument2);</pre>
-    </section>
-
-    <section>
-        <h2>Parameters vs Arguments</h2>
-        <p>Function <strong>parameters</strong> are listed inside the parentheses () in the function definition. Function <strong>arguments</strong> are the values received by the function when it is invoked.</p>
-        <pre>function multiply(a, b) {
-  return a * b;
-}
-
-let result = multiply(4, 3); // 4 and 3 are arguments
-console.log(result); // 12</pre>
-    </section>
-
-    <section>
-        <h2>The Return Statement</h2>
-        <p>When JavaScript reaches a <code>return</code> statement, the function will stop executing. If the function was invoked from a statement, JavaScript will "return" to execute the code after the invoking statement.</p>
+        <p>A function is defined with the <code>function</code> keyword, followed by a <strong>name</strong>, followed by <strong>parentheses ()</strong>.</p>
+        <pre>function myFunction(p1, p2) {
+  return p1 * p2;   // The function returns the product of p1 and p2
+}</pre>
         <div class="info-card">
-            <p>Functions often compute a <strong>return value</strong>. The return value is "returned" back to the "caller".</p>
+            <h3>Parameters vs Arguments</h3>
+            <p><strong>Parameters</strong> are the names listed in the function definition. <strong>Arguments</strong> are the real values passed to the function when it is called.</p>
         </div>
     </section>
 
     <section>
-        <h2>Modern Arrow Functions</h2>
-        <p>Arrow functions allow us to write shorter function syntax. Introduced in ES6, they are the standard for modern development.</p>
+        <h2>The Return Keyword</h2>
+        <p>When JavaScript reaches a <code>return</code> statement, the function will stop executing. If the function was invoked from a statement, JavaScript will "return" to execute the code after the invoking statement.</p>
+        <pre>let x = calculateSum(5, 10);
+
+function calculateSum(a, b) {
+  return a + b;
+}
+// x becomes 15</pre>
+    </section>
+
+    <section>
+        <h2>Arrow Functions (ES6)</h2>
+        <p>Arrow functions allow us to write shorter function syntax. They are very common in modern JavaScript development.</p>
         <pre>// Traditional Function
-var welcome = function() {
+function hello() {
   return "Hello World!";
 }
 
 // Arrow Function
-const welcome = () => "Hello World!";
-
-// With Parameters
-const add = (x, y) => x + y;</pre>
+const hello = () => "Hello World!";</pre>
     </section>
 
     <section>
-        <h2>Function Scope</h2>
-        <p>Variables declared within a JavaScript function, become <strong>LOCAL</strong> to the function. Local variables can only be accessed from within the function.</p>
-        <pre>function myFunc() {
-  let carName = "Volvo"; // Local variable
-  console.log(carName);
+        <h2>Local Variables</h2>
+        <p>Variables declared within a JavaScript function become <strong>LOCAL</strong> to the function. Local variables can only be accessed from within the function.</p>
+        <pre>function test() {
+  let carName = "Volvo";
+  // carName is visible here
 }
-// carName is NOT accessible here</pre>
+// carName is NOT visible here</pre>
     </section>
 
     <section>
         <h2>Functions Playground</h2>
-        <p>Interact with these predefined functions to see how logic flows:</p>
+        <p>Experiment with function calls below:</p>
         <div class="playground-card">
-            <h3 style="margin-top:0; color: #1e293b;">Interactive Functions Testing</h3>
-            <div id="output-screen">Output:<br>Ready to invoke functions...</div>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px;">
+                <input type="number" id="inputX" value="4" style="width: 80px; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+                <input type="number" id="inputY" value="2" style="width: 80px; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+            </div>
+            <div id="output-screen">Output will appear here...</div>
+            
             <div class="btn-grid">
-                <button class="action-btn" onclick="runGreetEx()">Greeting Function</button>
-                <button class="action-btn" onclick="runSquareEx()">Square Math</button>
-                <button class="action-btn" onclick="runTempEx()">Convert Temp</button>
-                <button class="action-btn" onclick="runArrowEx()">Arrow Logic</button>
-                <button class="action-btn" onclick="clearOutput()" style="background:#444; color: white;">Clear Output</button>
+                <button class="action-btn" onclick="callSquare()">Square of X</button>
+                <button class="action-btn" onclick="callAdd()">Add X + Y</button>
+                <button class="action-btn" onclick="callGreet()">Greet User</button>
+                <button class="action-btn" onclick="resetPlayground()" style="background:#64748b;">Reset</button>
             </div>
         </div>
     </section>
 
-    <!-- Try It Yourself Section -->
-    <section>
-        <h2>Try It Yourself</h2>
-        <p>Write your own function logic below. Experiment with parameters and return values!</p>
-        
-        <div class="try-it-editor">
-            <div class="editor-header">
-                <span class="editor-label">FUNCTIONS_LAB.JS</span>
-                <button class="action-btn" id="custom-run-btn" style="padding: 6px 15px; font-size: 0.8rem;">Run Code</button>
-            </div>
-            <textarea id="custom-editor" spellcheck="false">// Define your function here!
-function calculateArea(radius) {
-  const PI = 3.14159;
-  return PI * (radius ** 2);
-}
-
-// Invoke and display
-const r = 5;
-const area = calculateArea(r).toFixed(2);
-
-document.getElementById('custom-preview').innerHTML = `
-  <h3 style="color: #333">Function Result:</h3>
-  <p style="color: #000000;">Radius: <strong>${r}</strong></p>
-  <p style="color: #000000;">Area of Circle: <strong>${area}</strong></p>
-  <p style="color: #000000;">Status: <span style="color: green">Function executed successfully!</span></p>
-`;</textarea>
-            <div id="custom-preview">
-                <span style="color: #9ca3af">Invoke your logic to see results here...</span>
-            </div>
-        </div>
-    </section>
-
+    <!-- QUIZ SECTION -->
     <section id="quiz-area">
         <h2>Functions Knowledge Check</h2>
-        <p>Test your mastery of JavaScript Functions! 15 seconds per question.</p>
+        <p>Test your understanding of functions! 15 seconds per question.</p>
         <div id="quiz-container">
             <div id="timer-bar"></div>
             <div id="quiz-content" style="text-align: center;">
-                <button class="action-btn" onclick="startQuiz()" style="padding: 15px 40px; margin-top: 20px;">Start Functions Quiz</button>
+                <button class="action-btn" onclick="startQuiz()" style="padding: 12px 35px; margin-top: 20px;">Start Quiz</button>
             </div>
         </div>
     </section>
 
     <div class="nav-links">
-        <a href="js4.html">← Prev: Operators</a>
-        <a href="js6.html">Next: Objects →</a>
+        <a href="operators.html" class="back">← Back to Operators</a>
+        <a href="objects.html">Next: Objects →</a>
     </div>
-
-    <footer>
-        ©️ 2026 JavaScript Tutorial Series. All rights reserved.
-    </footer>
 </div>
 
+<footer>
+    © 2026 JavaScript Tutorial Series. All rights reserved.
+</footer>
+
 <script>
+    // PLAYGROUND LOGIC
     const screen = document.getElementById('output-screen');
 
-    function runGreetEx() {
-        function greet(name) { return "Hello, " + name + "!"; }
-        screen.innerHTML = `Output:<br>greet("Student") returned: "${greet("Student")}"`;
+    // 1. A function to square a number
+    function square(n) {
+        return n * n;
     }
 
-    function runSquareEx() {
-        const square = (n) => n * n;
-        screen.innerHTML = `Output:<br>The square of 8 is: ${square(8)}`;
+    // 2. A function to add two numbers
+    const add = (a, b) => a + b;
+
+    function callSquare() {
+        const x = parseFloat(document.getElementById('inputX').value);
+        if (isNaN(x)) { screen.innerText = "Error: Input X is not a number."; return; }
+        screen.innerText = `Result of square(${x}): ${square(x)}`;
     }
 
-    function runTempEx() {
-        function toCelsius(f) { return (5/9) * (f-32); }
-        screen.innerHTML = `Output:<br>100°F is ${toCelsius(100).toFixed(1)}°C`;
+    function callAdd() {
+        const x = parseFloat(document.getElementById('inputX').value);
+        const y = parseFloat(document.getElementById('inputY').value);
+        if (isNaN(x) || isNaN(y)) { screen.innerText = "Error: Please enter valid numbers."; return; }
+        screen.innerText = `Result of add(${x}, ${y}): ${add(x, y)}`;
     }
 
-    function runArrowEx() {
-        const checkEven = n => n % 2 === 0 ? "Even" : "Odd";
-        screen.innerHTML = `Output:<br>The number 7 is: ${checkEven(7)}`;
-    }
-
-    function clearOutput() {
-        screen.innerHTML = "Output:<br>Ready to invoke functions...";
-    }
-
-    // --- Custom Editor Logic ---
-    const customRunBtn = document.getElementById('custom-run-btn');
-    const customEditor = document.getElementById('custom-editor');
-    const customPreview = document.getElementById('custom-preview');
-
-    customRunBtn.addEventListener('click', () => {
-        try {
-            customPreview.innerHTML = "";
-            const userScript = new Function('document', customEditor.value);
-            userScript(document);
-        } catch (err) {
-            customPreview.innerHTML = `<div style="color: #ef4444; font-family: monospace;">Error: ${err.message}</div>`;
+    function callGreet() {
+        function getGreeting(name) {
+            return `Hello, ${name}! Functions are powerful.`;
         }
-    });
+        screen.innerText = getGreeting("Developer");
+    }
 
-    // Quiz Data & Logic
+    function resetPlayground() {
+        document.getElementById('inputX').value = 4;
+        document.getElementById('inputY').value = 2;
+        screen.innerText = "Output will appear here...";
+    }
+
+    // QUIZ LOGIC
     const quizData = [
-        { q: "Which keyword is used to start a function declaration?", a: ["func", "def", "function", "declare"], correct: 2 },
-        { q: "Variables defined inside a function have what kind of scope?", a: ["Global", "Local", "Static", "External"], correct: 1 },
-        { q: "Which statement stops function execution and sends a value back?", a: ["stop", "exit", "return", "break"], correct: 2 },
-        { q: "What is the correct syntax for an arrow function with no parameters?", a: ["() => { }", "=> { }", "func => { }", "arrow() { }"], correct: 0 },
-        { q: "What are the values listed in the function definition called?", a: ["Arguments", "Variables", "Parameters", "Inputs"], correct: 2 }
+        { q: "Which keyword is used to define a JavaScript function?", a: ["method", "define", "function", "action"], correct: 2 },
+        { q: "What is the correct way to call a function named 'myFunc'?", a: ["call myFunc()", "myFunc()", "invoke myFunc()", "myFunc"], correct: 1 },
+        { q: "In 'function add(a, b)', what are 'a' and 'b' called?", a: ["Variables", "Arguments", "Parameters", "Elements"], correct: 2 },
+        { q: "Which statement is used to send a value back from a function to its caller?", a: ["send", "output", "break", "return"], correct: 3 },
+        { q: "Where are variables declared with 'let' inside a function accessible?", a: ["Everywhere", "Only in that function", "Only in the main script", "Nowhere"], correct: 1 }
     ];
 
     let currentQ = 0;
-    let scoreCount = 0;
+    let score = 0;
     let timer;
     let timeLeft = 15;
 
     function startQuiz() {
         currentQ = 0;
-        scoreCount = 0;
+        score = 0;
         showQuestion();
     }
 
@@ -466,14 +347,13 @@ document.getElementById('custom-preview').innerHTML = `
         
         document.getElementById('quiz-content').innerHTML = `
             <div class="quiz-question">Question ${currentQ + 1}: ${data.q}</div>
-            <div class="quiz-options" style="text-align: left;">${optionsHtml}</div>
+            <div class="quiz-options">${optionsHtml}</div>
         `;
 
         timer = setInterval(() => {
             timeLeft--;
             updateTimerBar();
             if (timeLeft <= 0) {
-                clearInterval(timer);
                 currentQ++;
                 showQuestion();
             }
@@ -492,8 +372,8 @@ document.getElementById('custom-preview').innerHTML = `
         
         if (index === correct) {
             opts[index].classList.add('correct');
-            scoreCount++;
-        } else if (index !== -1) {
+            score++;
+        } else {
             opts[index].classList.add('wrong');
             opts[correct].classList.add('correct');
         }
@@ -507,11 +387,9 @@ document.getElementById('custom-preview').innerHTML = `
     function showResults() {
         document.getElementById('timer-bar').style.width = "0%";
         document.getElementById('quiz-content').innerHTML = `
-            <div style="padding: 20px;">
-                <h2 style="border:none; text-align:center; margin:0; color: white;">Quiz Complete!</h2>
-                <p style="text-align:center; font-size: 1.5rem; color: var(--primary); font-weight: bold; margin: 15px 0;">Score: ${scoreCount} / ${quizData.length}</p>
-                <button class="action-btn" onclick="startQuiz()" style="display: block; margin: 20px auto; padding: 12px 40px;">Try Again</button>
-            </div>
+            <div class="quiz-question" style="margin-top:20px;">Quiz Complete!</div>
+            <p>You scored ${score} out of ${quizData.length}.</p>
+            <button class="action-btn" onclick="startQuiz()" style="display: block; margin: 20px auto;">Try Again</button>
         `;
     }
 </script>

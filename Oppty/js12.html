@@ -7,15 +7,15 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap");
 
-      :root {
-        --primary: #ffd200; /* Gold/Yellow */
-        --secondary: #000000; /* Black */
-        --accent: #f7971e; /* Orange */
+      /* :root {
+        --primary: #ffd200; 
+        --secondary: #000000;
+        --accent: #f7971e; 
         --success: #4ade80;
         --error: #f87171;
         --bg-gradient: linear-gradient(135deg, #000000, #434343);
         --btn-gradient: linear-gradient(45deg, #f7971e, #ffd200);
-      }
+      } */
 
       * {
         margin: 0;
@@ -25,105 +25,102 @@
       }
 
       body {
-        background: var(--bg-gradient);
-        color: white;
-        line-height: 1.7;
-        padding: 60px;
+        background-color: #f1f5f9;
+        color: #334155;
+        padding: 40px 20px;
         min-height: 100vh;
       }
 
       .container {
-        max-width: 1200px;
+        max-width: 900px;
         margin: auto;
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(12px);
+        background: #ffffff;
         padding: 50px;
         border-radius: 25px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e2e8f0;
       }
 
       .banner {
-        background: var(--btn-gradient);
-        padding: 40px;
+        background: linear-gradient(45deg, #6366f1, #8b5cf6);
+        padding: 35px;
         border-radius: 20px;
         margin-bottom: 40px;
         text-align: center;
-        color: black;
-        box-shadow: 0 10px 30px rgba(247, 151, 30, 0.2);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
       }
       .banner h1 {
         margin: 0;
-        font-size: 2.4rem;
-        font-weight: 700;
+        font-size: 2.2rem;
+        color: #ffffff;
       }
       .banner p {
         margin: 10px 0 0;
-        opacity: 0.8;
+        opacity: 0.95;
         font-weight: 400;
+        color: #ffffff;
       }
 
       h2 {
-        font-size: 1.8rem;
         margin: 40px 0 20px;
-        color: var(--primary);
-        border-left: 4px solid var(--accent);
+        color: #1e293b;
+        border-left: 4px solid #6366f1;
         padding-left: 15px;
       }
 
       h3 {
-        color: var(--accent);
+        color: #4f46e5;
         margin: 25px 0 15px;
         font-size: 1.3rem;
       }
       p {
         margin-bottom: 25px;
-        color: #e0e0e0;
-        font-weight: 300;
+        line-height: 1.8;
+        font-weight: 400;
       }
 
       pre {
-        background: #111827;
+        background: #1e293b;
         padding: 25px;
         border-radius: 15px;
         overflow: auto;
-        color: var(--primary);
-        font-family: "Fira Code", monospace;
-        font-size: 0.9rem;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        color: #e2e8f0;
+        font-family: "Courier New", monospace;
+        font-size: 0.85rem;
+        border: 1px solid #0f172a;
         margin-bottom: 30px;
       }
 
       .info-card {
-        background: rgba(255, 255, 255, 0.05);
+        background: #f8fafc;
         padding: 20px;
         border-radius: 12px;
         margin-bottom: 20px;
-        border: 1px dashed rgba(255, 255, 255, 0.2);
+        border: 1px solid #e2e8f0;
       }
 
       /* Playground Card */
       .playground-card {
-        background: white;
+        background: #f8fafc;
         color: #333;
         padding: 30px;
-        border-radius: 20px;
+        border-radius: 15px;
         margin-top: 25px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        border: 1px solid #e2e8f0;
       }
 
       #output-screen {
-        background: #f1f5f9;
-        padding: 20px;
-        border-radius: 12px;
-        border-left: 5px solid var(--accent);
+        background: #1e293b;
+        color: #4ade80;
+        padding: 15px;
+        border-radius: 8px;
         margin-bottom: 20px;
-        font-family: "Fira Code", monospace;
-        min-height: 100px;
-        color: #1e293b;
-        font-weight: 500;
+        font-family: monospace;
+        min-height: 80px;
+        text-align: left;
         white-space: pre-wrap;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
 
       /* Interactive Calculator Form */
@@ -151,26 +148,26 @@
 
       .btn-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
         margin-top: 20px;
       }
 
       .action-btn {
-        padding: 12px 25px;
-        background: var(--btn-gradient);
-        color: black;
+         padding: 10px 20px;
+        background: linear-gradient(45deg, #6366f1, #8b5cf6);
+        color: white;
         border: none;
-        border-radius: 30px;
+        border-radius: 25px;
         cursor: pointer;
         font-weight: 600;
+        font-size: 0.9rem;
         transition: 0.3s;
         text-align: center;
-        font-size: 0.9rem;
       }
       .action-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(247, 151, 30, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
       }
 
       /* Try It Yourself Section Styles */
@@ -314,7 +311,9 @@
     <div class="container">
       <header class="banner">
         <h1>12. JavaScript Error Handling</h1>
-        <p style="color: #000000;">Handle runtime errors using try, catch, finally and throw</p>
+        <p style="color: #000000">
+          Handle runtime errors using try, catch, finally and throw
+        </p>
       </header>
 
       <section>
@@ -390,15 +389,17 @@ function checkAge(age) {
   }
   return "Access Granted";
 }
-    </pre>
+    </pre
+        >
       </section>
 
-     
       <section>
         <h2>Error Handling Playground</h2>
         <p>Test different error handling scenarios:</p>
         <div class="playground-card">
-          <h3 style="margin-top:0; color: #1e293b;">Interactive Error Handling Testing</h3>
+          <h3 style="margin-top: 0; color: #1e293b">
+            Interactive Error Handling Testing
+          </h3>
           <div id="output-screen">
             Output:<br />Ready to test error handling...
           </div>

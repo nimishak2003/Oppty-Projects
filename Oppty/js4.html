@@ -1,560 +1,575 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript Operators - Comprehensive Guide</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
-        :root {
-            --primary: #ffd200; /* Gold/Yellow */
-            --secondary: #000000; /* Black */
-            --accent: #f7971e; /* Orange */
-            --success: #4ade80;
-            --error: #f87171;
-            --bg-gradient: linear-gradient(135deg, #000000, #434343);
-            --btn-gradient: linear-gradient(45deg, #f7971e, #ffd200);
-        }
+      /* Global Reset & Light Theme - Consistent with previous modules */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Poppins', sans-serif; 
-        }
+      body {
+        background-color: #f1f5f9;
+        color: #334155;
+        padding: 40px 20px;
+        min-height: 100vh;
+      }
 
-        body {
-            background: var(--bg-gradient);
-            color: white;
-            line-height: 1.7;
-            padding: 60px;
-            min-height: 100vh;
-        }
+      .container {
+        max-width: 900px;
+        margin: auto;
+        background: #ffffff;
+        padding: 50px;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e2e8f0;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            padding: 50px;
-            border-radius: 25px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+      /* Banner Styling - Indigo Gradient */
+      .banner {
+        background: linear-gradient(45deg, #6366f1, #8b5cf6);
+        padding: 35px;
+        border-radius: 20px;
+        margin-bottom: 40px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+      }
+      .banner h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        color: #ffffff;
+      }
+      .banner p {
+        margin: 10px 0 0;
+        opacity: 0.95;
+        font-weight: 400;
+        color: #ffffff;
+      }
 
-        .banner {
-            background: var(--btn-gradient);
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            text-align: center;
-            color: black;
-            box-shadow: 0 10px 30px rgba(247, 151, 30, 0.2);
-        }
-        .banner h1 { margin: 0; font-size: 2.4rem; font-weight: 700; }
-        .banner p { margin: 10px 0 0; opacity: 0.8; font-weight: 400; }
+      /* Headings */
+      h2 {
+        margin: 40px 0 20px;
+        color: #1e293b;
+        border-left: 4px solid #6366f1;
+        padding-left: 15px;
+      }
+      h3 {
+        color: #4f46e5;
+        margin: 25px 0 15px;
+        font-size: 1.3rem;
+      }
+      p {
+        margin-bottom: 25px;
+        line-height: 1.8;
+        font-weight: 400;
+      }
 
-        h2 { 
-            font-size: 1.8rem; 
-            margin: 40px 0 20px; 
-            color: var(--primary); 
-            border-left: 4px solid var(--accent);
-            padding-left: 15px;
-        }
+      /* List Styling */
+      ul {
+        margin-bottom: 25px;
+        list-style: none;
+      }
+      ul li {
+        margin-bottom: 12px;
+        padding-left: 25px;
+        position: relative;
+        color: #475569;
+      }
+      ul li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        color: #6366f1;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+      ul li strong {
+        color: #1e293b;
+      }
 
-        h3 { color: var(--accent); margin: 25px 0 15px; font-size: 1.3rem; }
-        p { margin-bottom: 25px; color: #e0e0e0; font-weight: 300; }
+      /* Code Block Styling */
+      pre {
+        background: #1e293b;
+        padding: 25px;
+        border-radius: 15px;
+        overflow: auto;
+        color: #e2e8f0;
+        font-family: "Courier New", monospace;
+        font-size: 0.85rem;
+        border: 1px solid #0f172a;
+        margin-bottom: 30px;
+      }
 
-        pre {
-            background: #111827;
-            padding: 25px;
-            border-radius: 15px;
-            overflow: auto;
-            color: var(--primary);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 30px;
-        }
+      /* Info Highlight Cards */
+      .info-card {
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #e2e8f0;
+      }
 
-        .info-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px dashed rgba(255, 255, 255, 0.2);
-        }
+      /* Playground Card */
+      .playground-card {
+        background: #f8fafc;
+        color: #333;
+        padding: 30px;
+        border-radius: 15px;
+        margin-top: 25px;
+        text-align: center;
+        border: 1px solid #e2e8f0;
+      }
 
-        /* Playground Card */
-        .playground-card {
-            background: white;
-            color: #333;
-            padding: 30px;
-            border-radius: 20px;
-            margin-top: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
+      #output-screen {
+        background: #1e293b;
+        color: #4ade80;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-family: monospace;
+        min-height: 80px;
+        text-align: left;
+        white-space: pre-wrap;
+        font-size: 0.9rem;
+      }
 
-        #output-screen {
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 5px solid var(--accent);
-            margin-bottom: 20px;
-            font-family: 'Fira Code', monospace;
-            min-height: 100px;
-            color: #1e293b;
-            font-weight: 500;
-            white-space: pre-wrap;
-            font-size: 0.95rem;
-        }
+      .btn-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+        margin-top: 20px;
+      }
 
-        /* Interactive Calculator Form */
-        .calc-form {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            border: 1px solid #e2e8f0;
-            align-items: center;
-        }
+      .action-btn {
+        padding: 10px 20px;
+        background: linear-gradient(45deg, #6366f1, #8b5cf6);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: 0.3s;
+        text-align: center;
+      }
+      .action-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+      }
 
-        .calc-form input, .calc-form select {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            min-width: 100px;
-            font-size: 0.9rem;
-        }
+      /* Quiz Container */
+      #quiz-container {
+        background: #ffffff;
+        padding: 35px;
+        border-radius: 20px;
+        margin-top: 60px;
+        border: 1px solid #e2e8f0;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      #timer-bar {
+        height: 6px;
+        background: #6366f1;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: width 1s linear;
+      }
+      .quiz-question {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        font-weight: 600;
+        color: #1e293b;
+      }
+      .quiz-options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .quiz-opt {
+        background: #f8fafc;
+        padding: 15px;
+        border-radius: 12px;
+        cursor: pointer;
+        border: 1px solid #e2e8f0;
+        transition: 0.3s;
+        color: #334155;
+        font-size: 0.95rem;
+        text-align: left;
+      }
+      .quiz-opt:hover {
+        background: #f1f5f9;
+        border-color: #6366f1;
+      }
+      .correct {
+        background: #dcfce7 !important;
+        color: #166534 !important;
+        border-color: #22c55e !important;
+        font-weight: 600;
+      }
+      .wrong {
+        background: #fee2e2 !important;
+        color: #991b1b !important;
+        border-color: #ef4444 !important;
+      }
 
-        .btn-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 12px;
-            margin-top: 20px;
-        }
+      /* Navigation Links */
+      .nav-links {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 60px;
+      }
+      .nav-links a {
+        padding: 10px 24px;
+        background: #6366f1;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+      .nav-links a.back {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        color: #64748b;
+      }
+      .nav-links a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+      }
 
-        .action-btn {
-            padding: 12px 25px;
-            background: var(--btn-gradient);
-            color: black;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        .action-btn:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 5px 15px rgba(247, 151, 30, 0.4);
-        }
-
-        /* Try It Yourself Section Styles */
-        .try-it-editor {
-            background: #111827;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin: 30px 0;
-            overflow: hidden;
-        }
-        .editor-header {
-            background: #1f2937;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .editor-label { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #9ca3af; }
-        
-        #custom-editor {
-            width: 100%;
-            height: 160px;
-            background: transparent;
-            color: var(--primary);
-            border: none;
-            padding: 20px;
-            font-family: 'Fira Code', monospace;
-            font-size: 14px;
-            resize: vertical;
-            outline: none;
-            border-bottom: 1px solid #1f2937;
-        }
-
-        #custom-preview {
-            background: white;
-            color: #111827;
-            padding: 30px;
-            min-height: 100px;
-            border-radius: 0 0 16px 16px;
-        }
-
-        /* Quiz System */
-        #quiz-container {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 60px;
-            overflow: hidden;
-        }
-        #timer-bar {
-            height: 6px;
-            background: var(--primary);
-            width: 100%;
-            position: absolute;
-            top: 0; left: 0;
-            transition: width 1s linear;
-        }
-        .quiz-question { font-size: 1.3rem; margin-bottom: 25px; font-weight: 600; color: white; }
-        .quiz-options { display: flex; flex-direction: column; gap: 12px; }
-        .quiz-opt {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 18px;
-            border-radius: 12px;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.2s;
-        }
-        .quiz-opt:hover { background: rgba(255, 255, 255, 0.12); border-color: var(--primary); }
-        .correct { background: var(--success) !important; color: #064e3b; font-weight: bold; }
-        .wrong { background: var(--error) !important; color: #7f1d1d; }
-
-        .nav-links {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 60px;
-        }
-        .nav-links a {
-            padding: 12px 30px;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            border: 1px solid var(--primary);
-            transition: 0.3s;
-        }
-        .nav-links a:hover { background: var(--btn-gradient); color: black; border-color: transparent; }
-
-        footer { text-align: center; padding: 40px; font-size: 0.85rem; color: #9ca3af; opacity: 0.6; }
-
-        @media (max-width: 600px) {
-            body { padding: 20px; }
-            .container { padding: 30px; }
-            .calc-form { flex-direction: column; }
-        }
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 0.8rem;
+        color: #94a3b8;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="container">
+      <header class="banner">
+        <h1>4. JavaScript Operators</h1>
+        <p>Learn how to perform calculations and logical operations</p>
+      </header>
 
-<div class="container">
-    <header class="banner">
-        <h1>4. Operators</h1>
-        <p style="color: #000000;">Learn about operators in JavaScript</p>
-    </header>
-
-    <section>
+      <section>
         <h2>What are Operators?</h2>
-        <p>Operators are symbols that perform operations on operands (values and variables). JavaScript has various types of operators for different operations, from simple math to complex logic.</p>
-    </section>
+        <p>
+          In JavaScript, an operator is a special symbol used to perform
+          operations on operands (values and variables). For example, in
+          <code>5 + 2</code>, the <code>+</code> is an operator and
+          <code>5</code> and <code>2</code> are operands.
+        </p>
+      </section>
 
-    <section>
+      <section>
         <h2>Arithmetic Operators</h2>
-        <p>Used to perform mathematical operations:</p>
-        <pre>let a = 10; let b = 2;
-console.log(a + b);  // Addition: 12
-console.log(a - b);  // Subtraction: 8
-console.log(a * b);  // Multiplication: 20
-console.log(a / b);  // Division: 5
-console.log(a % b);  // Modulus (Remainder): 0
-console.log(a ** b); // Exponentiation: 100
-console.log(++a);    // Increment: 11
-console.log(--b);    // Decrement: 1</pre>
-    </section>
+        <p>
+          Arithmetic operators are used to perform common mathematical
+          calculations.
+        </p>
+        <ul>
+          <li><strong>+ (Addition):</strong> Adds values together</li>
+          <li>
+            <strong>- (Subtraction):</strong> Subtracts one value from another
+          </li>
+          <li><strong>* (Multiplication):</strong> Multiplies values</li>
+          <li><strong>/ (Division):</strong> Divides one value by another</li>
+          <li><strong>% (Modulus):</strong> Returns the division remainder</li>
+          <li><strong>** (Exponentiation):</strong> Raises to the power of</li>
+        </ul>
+        <pre>
+let x = 10 + 5;  // 15
+let y = 10 % 3;  // 1 (remainder)
+let z = 2 ** 3;  // 8 (2 to the power of 3)</pre
+        >
+      </section>
 
-    <section>
+      <section>
         <h2>Assignment Operators</h2>
-        <p>Used to assign values to variables:</p>
-        <pre>let x = 10;
-x += 5; // Same as x = x + 5 (15)
-x -= 2; // Same as x = x - 2 (13)
-x *= 3; // Same as x = x * 3 (39)
-x /= 3; // Same as x = x / 3 (13)
-x %= 4; // Same as x = x % 4 (1)</pre>
-    </section>
+        <p>Assignment operators assign values to JavaScript variables.</p>
+        <pre>
+let x = 10;
+x += 5; // Same as x = x + 5 (Result: 15)
+x *= 2; // Same as x = x * 2 (Result: 30)</pre
+        >
+      </section>
 
-    <section>
+      <section>
         <h2>Comparison Operators</h2>
-        <p>Used to compare values and return a Boolean:</p>
-        <pre>let p = 5; let q = "5";
-console.log(p == q);  // Equal (value only): true
-console.log(p === q); // Equal (value & type): false
-console.log(p != q);  // Not equal: false
-console.log(p !== q); // Not equal (value & type): true
-console.log(p > 2);   // Greater than: true
-console.log(p <= 4);  // Less than or equal: false</pre>
-    </section>
+        <p>
+          Comparison operators are used in logical statements to determine
+          equality or difference between variables or values.
+        </p>
+        <ul>
+          <li><strong>== :</strong> Equal to</li>
+          <li><strong>=== :</strong> Equal value and equal type (Strict)</li>
+          <li><strong>!= :</strong> Not equal</li>
+          <li><strong>> :</strong> Greater than</li>
+          <li><strong>< :</strong> Less than</li>
+        </ul>
+        <div class="info-card">
+          <h3>Strict Equality (===)</h3>
+          <p>
+            Always prefer <code>===</code> over <code>==</code>. The strict
+            operator checks both the <strong>value</strong> and the
+            <strong>data type</strong>, preventing unexpected bugs.
+          </p>
+        </div>
+      </section>
 
-    <section>
+      <section>
         <h2>Logical Operators</h2>
-        <p>Used to determine the logic between variables or values:</p>
-        <pre>let age = 22; let hasLicense = true;
-// AND operator (Both must be true)
-console.log(age >= 18 && hasLicense); // true
+        <p>
+          Logical operators are used to determine the logic between variables or
+          values.
+        </p>
+        <pre>
+let x = 6;
+let y = 3;
 
-// OR operator (At least one must be true)
-console.log(age < 18 || hasLicense); // true
+(x < 10 && y > 1) // true (AND)
+(x == 5 || y == 5) // false (OR)
+!(x == y)         // true (NOT)</pre
+        >
+      </section>
 
-// NOT operator (Inverts Boolean)
-console.log(!hasLicense); // false</pre>
-    </section>
-
-    <section>
-        <h2>Extra: Conditional (Ternary) Operator</h2>
-        <p>A shorthand way to write an if-else statement:</p>
-        <pre>let score = 85;
-let result = (score >= 50) ? "Pass" : "Fail";
-console.log(result); // "Pass"</pre>
-    </section>
-
-    <section>
-        <h2>Extra: String & Type Operators</h2>
-        <div class="info-card">
-            <h3>Concatenation</h3>
-            <p>The <code>+</code> operator can also join strings together.</p>
-            <pre>let text = "Hello" + " " + "World"; // "Hello World"</pre>
-        </div>
-        <div class="info-card">
-            <h3>typeof Operator</h3>
-            <p>Used to find the data type of a variable.</p>
-            <pre>typeof "John"; // returns "string"
-typeof 3.14;   // returns "number"</pre>
-        </div>
-    </section>
-
-    <!-- Playground Section -->
-    <section>
+      <section>
         <h2>Operators Playground</h2>
-        <p>Experiment with different operators and see the results instantly using our built-in tool:</p>
+        <p>Perform real-time operations on the values below:</p>
         <div class="playground-card">
-            <h3 style="margin-top:0; color: #1e293b;">Interactive Operator Testing</h3>
-            <div id="output-screen">Output:<br>Ready to explore operators...</div>
-            
-            <div class="btn-grid">
-                <button class="action-btn" onclick="showArithmetic()">Arithmetic Ex</button>
-                <button class="action-btn" onclick="showComparison()">Comparison Ex</button>
-                <button class="action-btn" onclick="showLogical()">Logical Ex</button>
-                <button class="action-btn" onclick="clearOutput()" style="background:#444; color: white;">Clear Output</button>
-            </div>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              justify-content: center;
+              margin-bottom: 20px;
+            "
+          >
+            <input
+              type="number"
+              id="valA"
+              value="10"
+              style="
+                width: 80px;
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+              "
+            />
+            <input
+              type="number"
+              id="valB"
+              value="5"
+              style="
+                width: 80px;
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+              "
+            />
+          </div>
+          <div id="output-screen">Select an operation to see the result...</div>
 
-            <div class="calc-form">
-                <input type="number" id="num1" placeholder="Num 1">
-                <select id="opSelect">
-                    <option value="+">+</option>
-                    <option value="-">-</option>
-                    <option value="*">*</option>
-                    <option value="/">/</option>
-                    <option value="%">%</option>
-                    <option value="**">**</option>
-                </select>
-                <input type="number" id="num2" placeholder="Num 2">
-                <button class="action-btn" style="flex: 1;" onclick="calculate()">Calculate</button>
-            </div>
+          <div class="btn-grid">
+            <button class="action-btn" onclick="calc('add')">Add (+)</button>
+            <button class="action-btn" onclick="calc('mul')">
+              Multiply (*)
+            </button>
+            <button class="action-btn" onclick="calc('mod')">
+              Modulus (%)
+            </button>
+            <button class="action-btn" onclick="calc('comp')">
+              Compare (===)
+            </button>
+            <button
+              class="action-btn"
+              onclick="resetPlayground()"
+              style="background: #64748b"
+            >
+              Reset
+            </button>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Try It Yourself Section -->
-    <section>
-        <h2>Try It Yourself</h2>
-        <p>Write your own custom JavaScript code below to test any combination of operators. Click "Run Code" to see the output.</p>
-        
-        <div class="try-it-editor">
-            <div class="editor-header">
-                <span class="editor-label">LIVE_EDITOR.JS</span>
-                <button class="action-btn" id="custom-run-btn" style="padding: 6px 15px; font-size: 0.8rem;">Run Code</button>
-            </div>
-            <textarea id="custom-editor" spellcheck="false">// Experiment with operators here!
-let x = 15;
-let y = 4;
-
-let result = (x + y) * 2;
-let logic = x > 10 && y < 5;
-
-document.getElementById('custom-preview').innerHTML = `
-  <h3 style="color: #333">Results:</h3>
-  <p style="color: #000000;">Result calculation: <strong>${result}</strong></p>
-  <p style="color: #000000;">Logic check: <strong>${logic}</strong></p>
-  <p style="color: #000000;">String power: <strong>${"JS" + " " + "Rocks!"}</strong></p>
-`;</textarea>
-            <div id="custom-preview">
-                <span style="color: #9ca3af">Output will appear here after clicking "Run Code"...</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- QUIZ SECTION -->
-    <section id="quiz-area">
-        <h2>Operator Knowledge Check</h2>
+      <!-- QUIZ SECTION -->
+      <section id="quiz-area">
+        <h2>Operators Knowledge Check</h2>
+        <p>Test your understanding of operators! 15 seconds per question.</p>
         <div id="quiz-container">
-            <div id="timer-bar"></div>
-            <div id="quiz-content" style="text-align: center;">
-                <button class="action-btn" onclick="startQuiz()" style="padding: 15px 45px; margin-top: 20px;">Start Operators Quiz</button>
-            </div>
+          <div id="timer-bar"></div>
+          <div id="quiz-content" style="text-align: center">
+            <button
+              class="action-btn"
+              onclick="startQuiz()"
+              style="padding: 12px 35px; margin-top: 20px"
+            >
+              Start Quiz
+            </button>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <div class="nav-links">
-        <a href="js3.html">← Prev: Variables</a>
-        <a href="js5.html">Next: Functions →</a>
+      <div class="nav-links">
+        <a href="variables.html" class="back">← Back to Variables</a>
+        <a href="arrays.html">Next: Arrays →</a>
+      </div>
     </div>
 
-    <footer>
-        ©️ 2026 JavaScript Tutorial Series. All rights reserved.
-    </footer>
-</div>
+    <footer>© 2026 JavaScript Tutorial Series. All rights reserved.</footer>
 
-<script>
-    const screen = document.getElementById('output-screen');
+    <script>
+      // PLAYGROUND LOGIC
+      const screen = document.getElementById("output-screen");
 
-    function showArithmetic() {
-        screen.innerHTML = "Output:<br>let x = 10 + 5 * 2;<br>Result: 20 (Multiplication happens first!)";
-    }
+      function calc(type) {
+        const a = parseFloat(document.getElementById("valA").value);
+        const b = parseFloat(document.getElementById("valB").value);
 
-    function showComparison() {
-        screen.innerHTML = "Output:<br>5 === '5' is false (Strict Equality)<br>5 == '5' is true (Loose Equality)";
-    }
-
-    function showLogical() {
-        screen.innerHTML = "Output:<br>true && false is false<br>true || false is true";
-    }
-
-    function calculate() {
-        const n1 = parseFloat(document.getElementById('num1').value);
-        const n2 = parseFloat(document.getElementById('num2').value);
-        const op = document.getElementById('opSelect').value;
-        
-        if (isNaN(n1) || isNaN(n2)) {
-            screen.innerHTML = "Output:<br><span style='color:red'>Please enter both numbers.</span>";
-            return;
+        if (isNaN(a) || isNaN(b)) {
+          screen.innerText = "Please enter valid numbers.";
+          return;
         }
 
-        let res;
-        switch(op) {
-            case '+': res = n1 + n2; break;
-            case '-': res = n1 - n2; break;
-            case '*': res = n1 * n2; break;
-            case '/': res = n1 / n2; break;
-            case '%': res = n1 % n2; break;
-            case '**': res = n1 ** n2; break;
+        switch (type) {
+          case "add":
+            screen.innerText = `Operation: ${a} + ${b}\nResult: ${a + b}`;
+            break;
+          case "mul":
+            screen.innerText = `Operation: ${a} * ${b}\nResult: ${a * b}`;
+            break;
+          case "mod":
+            screen.innerText = `Operation: ${a} % ${b}\nResult: ${a % b}`;
+            break;
+          case "comp":
+            screen.innerText = `Logic: ${a} === ${b}\nResult: ${a === b}`;
+            break;
         }
-        screen.innerHTML = `Output:<br>${n1} ${op} ${n2} = <strong>${res}</strong>`;
-    }
+      }
 
-    function clearOutput() {
-        screen.innerHTML = "Output:<br>Ready to explore operators...";
-    }
+      function resetPlayground() {
+        document.getElementById("valA").value = 10;
+        document.getElementById("valB").value = 5;
+        screen.innerText = "Select an operation to see the result...";
+      }
 
-    // --- Custom Editor Logic ---
-    const customRunBtn = document.getElementById('custom-run-btn');
-    const customEditor = document.getElementById('custom-editor');
-    const customPreview = document.getElementById('custom-preview');
+      // QUIZ LOGIC
+      const quizData = [
+        {
+          q: "Which operator is used to assign a value to a variable?",
+          a: ["*", "==", "=", "-"],
+          correct: 2,
+        },
+        {
+          q: "What is the result of 10 % 3 in JavaScript?",
+          a: ["3", "1", "0", "3.33"],
+          correct: 1,
+        },
+        {
+          q: "Which operator checks for both equal value and equal type?",
+          a: ["==", "!=", "===", "&&"],
+          correct: 2,
+        },
+        {
+          q: "What does the '&&' operator represent?",
+          a: ["Logical OR", "Logical NOT", "Logical AND", "Addition"],
+          correct: 2,
+        },
+        {
+          q: "Which operator raises the first operand to the power of the second?",
+          a: ["^", "**", "*", "exp"],
+          correct: 1,
+        },
+      ];
 
-    customRunBtn.addEventListener('click', () => {
-        try {
-            customPreview.innerHTML = "";
-            const userScript = new Function('document', customEditor.value);
-            userScript(document);
-        } catch (err) {
-            customPreview.innerHTML = `<div style="color: #ef4444; font-family: monospace;">Error: ${err.message}</div>`;
-        }
-    });
+      let currentQ = 0;
+      let score = 0;
+      let timer;
+      let timeLeft = 15;
 
-    // Quiz Data
-    const quizData = [
-        { q: "What is the result of 10 % 3?", a: ["0", "1", "3", "3.33"], correct: 1 },
-        { q: "Which operator checks for both value and data type equality?", a: ["==", "=", "===", "!="], correct: 2 },
-        { q: "What does !true evaluate to?", a: ["true", "false", "undefined", "null"], correct: 1 },
-        { q: "Which is the exponentiation operator in modern JS?", a: ["^", "**", "*", "exp"], correct: 1 },
-        { q: "What is the result of '5' + 5 in JavaScript?", a: ["10", "55", "Error", "NaN"], correct: 1 }
-    ];
-
-    let currentQ = 0;
-    let scoreCount = 0;
-    let timer;
-    let timeLeft = 15;
-
-    function startQuiz() {
+      function startQuiz() {
         currentQ = 0;
-        scoreCount = 0;
+        score = 0;
         showQuestion();
-    }
+      }
 
-    function showQuestion() {
+      function showQuestion() {
         clearInterval(timer);
         if (currentQ >= quizData.length) {
-            showResults();
-            return;
+          showResults();
+          return;
         }
+
         timeLeft = 15;
         updateTimerBar();
+
         const data = quizData[currentQ];
-        let optionsHtml = data.a.map((opt, i) => `<div class="quiz-opt" onclick="checkAnswer(${i})">${opt}</div>`).join('');
-        document.getElementById('quiz-content').innerHTML = `
+        let optionsHtml = data.a
+          .map(
+            (opt, i) =>
+              `<div class="quiz-opt" onclick="checkAnswer(${i})">${opt}</div>`,
+          )
+          .join("");
+
+        document.getElementById("quiz-content").innerHTML = `
             <div class="quiz-question">Question ${currentQ + 1}: ${data.q}</div>
-            <div class="quiz-options" style="text-align: left;">${optionsHtml}</div>
+            <div class="quiz-options">${optionsHtml}</div>
         `;
+
         timer = setInterval(() => {
-            timeLeft--;
-            updateTimerBar();
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                currentQ++;
-                showQuestion();
-            }
-        }, 1000);
-    }
-
-    function updateTimerBar() {
-        const bar = document.getElementById('timer-bar');
-        if(bar) bar.style.width = (timeLeft / 15) * 100 + "%";
-    }
-
-    function checkAnswer(index) {
-        clearInterval(timer);
-        const correct = quizData[currentQ].correct;
-        const opts = document.querySelectorAll('.quiz-opt');
-        if (index === correct) {
-            opts[index].classList.add('correct');
-            scoreCount++;
-        } else if (index !== -1) {
-            opts[index].classList.add('wrong');
-            opts[correct].classList.add('correct');
-        }
-        setTimeout(() => {
+          timeLeft--;
+          updateTimerBar();
+          if (timeLeft <= 0) {
             currentQ++;
             showQuestion();
+          }
+        }, 1000);
+      }
+
+      function updateTimerBar() {
+        const bar = document.getElementById("timer-bar");
+        if (bar) bar.style.width = (timeLeft / 15) * 100 + "%";
+      }
+
+      function checkAnswer(index) {
+        clearInterval(timer);
+        const correct = quizData[currentQ].correct;
+        const opts = document.querySelectorAll(".quiz-opt");
+
+        if (index === correct) {
+          opts[index].classList.add("correct");
+          score++;
+        } else {
+          opts[index].classList.add("wrong");
+          opts[correct].classList.add("correct");
+        }
+
+        setTimeout(() => {
+          currentQ++;
+          showQuestion();
         }, 1500);
-    }
+      }
 
-    function showResults() {
-        document.getElementById('timer-bar').style.width = "0%";
-        document.getElementById('quiz-content').innerHTML = `
-            <div style="padding: 20px;">
-                <h2 style="border:none; text-align:center; margin:0; color: white;">Quiz Complete!</h2>
-                <p style="text-align:center; font-size: 1.5rem; color: var(--primary); font-weight: bold; margin: 15px 0;">Score: ${scoreCount} / ${quizData.length}</p>
-                <button class="action-btn" onclick="startQuiz()" style="display: block; margin: 20px auto; padding: 12px 40px;">Try Again</button>
-            </div>
+      function showResults() {
+        document.getElementById("timer-bar").style.width = "0%";
+        document.getElementById("quiz-content").innerHTML = `
+            <div class="quiz-question" style="margin-top:20px;">Quiz Complete!</div>
+            <p>You scored ${score} out of ${quizData.length}.</p>
+            <button class="action-btn" onclick="startQuiz()" style="display: block; margin: 20px auto;">Try Again</button>
         `;
-    }
-</script>
-
-</body>
+      }
+    </script>
+  </body>
 </html>
