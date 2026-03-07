@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Register System</title>
+    <link rel="stylesheet" href="07-03-2026Login.css" />
+  </head>
+  <body>
+    <!-- LOGIN -->
+    <div class="container" id="loginBox">
+      <h2>Login</h2>
+
+      <input type="text" id="loginUser" placeholder="Username" />
+
+      <input type="password" id="loginPass" placeholder="Password" />
+
+      <br /><br />
+
+      <button onclick="login()">Login</button>
+
+      <p id="loginMsg"></p>
+
+      <p>New User? <a onclick="showRegister()">Register</a></p>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="container" id="registerBox" style="display: none">
+      <h2>Register</h2>
+
+      <input type="text" id="regUser" placeholder="Username" />
+
+      <input type="password" id="regPass" placeholder="Password" />
+
+      <button onclick="register()">Register</button>
+
+      <p id="regMsg"></p>
+
+      <p>Already have account? <a onclick="showLogin()">Login</a></p>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="container" id="dashboard">
+      <h2 id="welcome"></h2>
+
+      <button onclick="logout()">Logout</button>
+    </div>
+
+    <script src="07-03-2026Login.js"></script>
+  </body>
+</html>
